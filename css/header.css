@@ -1,0 +1,56 @@
+.header{
+  width:1360px;
+  margin:0 auto;
+}
+.header_top{
+  height:140px;
+  position:relative;
+  margin-top:24px;
+}
+.gps_icon{ vertical-align:middle;}
+.font_small.font_main_color{line-height:20px;}
+a.total_store{margin-left:26px;color:#797979;}
+div.float_r{line-height:20px;}
+.log_reg_btn{
+  display:inline-block;
+  height:20px;
+  background:#8b766c;
+  color:#fff;
+  padding:0 14px;
+}
+div.float_r ul{display:inline-block;padding:0 10px;}
+div.float_r ul li:first-child{
+  background:url(../img/index/bottom.png) no-repeat right center;
+}
+div.float_r ul a{display:block;color:#8d8d8d;}
+div.float_r ul a:hover{color:#bf967c;}
+.phone_icon{vertical-align:middle;}
+.color_gray{color:#8d8d8d;}
+a.color_gray:hover{color:#bf967c;}
+.b_slash:before{
+  content:"/";
+  display:inline-block;
+  font-size:12px;
+  color:#8d8d8d;
+  padding:0 5px;
+}
+.dr_logo{
+  position:absolute;
+  top:22px;left:50%;
+  margin-left:-55.5px;
+}
+.search_id{
+  position:absolute;
+  top:30px;right:0;
+}
+.search_id input{
+  width:222px;
+  border:1px solid #d7d7d7;
+  font-size:13px;
+  padding:6px 4px 6px 10px;
+}
+.search_icon{
+  position:absolute;
+  width:22px;height:23px;
+  background:#000;
+}
