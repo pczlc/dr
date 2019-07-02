@@ -69,7 +69,7 @@ a.color_gray:hover{color:#bf967c;}
   left:0px;
   height:54px;
 }
-.dr_nav li>a{
+.dr_nav>li>a{
   display:inline-block;
   width:170px;
   text-align:center;
@@ -113,4 +113,24 @@ a.color_gray:hover{color:#bf967c;}
 .dr_navsuv_second img{
   width:200px;
   margin-top:20px;
+}
+.dr_navsuv_second .dr_set{margin-top:12px;}
+.dr_navsuv_second .dr_set a{
+  display:block;
+  width:190px;height:42px;
+  border-bottom:1px solid #dbdbdb;
+  font-size:12px;
+  color:#5e5e61;
+  line-height:42px;
+  text-align:center;
+}
+.dr_navsuv_second .dr_set a:hover{
+  color:#bf967c;
+  border-bottom-color:#afafb0;
+}
+.dr_navsuv_third .float_l{
+  width:500px;
+}
+.dr_navsuv_third .float_l{
+  width:495px;
 }
