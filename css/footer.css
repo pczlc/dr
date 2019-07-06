@@ -1,0 +1,100 @@
+.dr_footer_top{
+  height:16px;
+  background:url(../img/index/footer_rp.png) repeat-x;
+}
+.dr_footer_icon{
+  width:1200px;
+  margin:0 auto;
+  padding:30px 0;
+}
+.dr_footer_icon li{
+  padding:0 32px;
+}
+.dr_footer_icon li a{
+  display:block;
+}
+.dr_footer_icon li a i{
+  display:inline-block;
+  width:60px;height:60px;
+  background:url(../img/index/icon_footer.png) no-repeat;
+}
+.dr_footer_icon li:nth-child(2) a i{
+  background-position:-60px 0;
+}
+.dr_footer_icon li:nth-child(3) a i{
+  background-position:-120px 0;
+}
+.dr_footer_icon li:nth-child(4) a i{
+  background-position:-180px 0;
+}
+.dr_footer_icon li:nth-child(5) a i{
+  background-position:-240px 0;
+}
+.dr_footer_icon li:nth-child(6) a i{
+  background-position:-300px 0;
+}
+.dr_footer_icon li:nth-child(7) a i{
+  background-position:-360px 0;
+}
+.dr_footer_icon li:last-child a i{
+  background-position:-420px 0;
+}
+.dr_footer_icon li a i:hover{
+  background-position-y:-60px;
+}
+.dr_footer_icon li a p{
+  color:#666;
+  margin-top:16px;
+}
+.dr_footer_bottom{
+  background:#f7f7f7;
+  padding-top:56px;
+}
+.dr_service{
+  width:1200px;
+  margin:0 auto;
+  padding-bottom:50px;
+}
+.dr_service ul li{
+  width:170px;
+  text-align:center;
+  line-height:22px;
+  padding:6px 0;
+}
+.dr_service ul li:not(:first-child){
+  border-left:2px solid #dbdbdb;
+}
+.dr_service ul li h6{
+  font-size:14px;
+  font-weight:700;
+  color:#666;
+}
+.dr_service ul li a{
+  display:block;
+  font-size:12px;
+  color:#666;
+}
+.dr_focus{margin-top:28px;text-align:center;line-height:1;color:#666;}
+.dr_focus h6{font-size:14px;margin-bottom:12px;}
+.dr_focus p{font-size:12px;margin-bottom:18px;}
+.dr_focus a{
+  display:inline-block;
+  width:44px;height:44px;
+  background:url(../img/index/share_focus.png);
+  margin:0 15px;
+  vertical-align:middle;
+}
+.dr_focus a:last-child{background-position:-44px 0}
+.dr_focus a:hover{background-position-y:-53px;}
+.dr_gray_b{
+  height:70px;
+  background:#868686;
+  font-size:12px;
+  line-height:70px;
+}
+.w-1360{margin:0 auto;box-sizing:border-box;padding:0 50px;}
+.dr_gray_b .float_l a{display:inline-block;color:#c2c2c2;margin-right:20px;}
+.dr_gray_b .float_r a img{width:20px;vertical-align:middle;}
+.dr_gray_b .gov_icon{margin-top:7px;}
+.dr_gray_b span{font-size:12px;color:#ddd;}
+.kx_icon{width:68px;vertical-align:middle;margin-left:8px;}

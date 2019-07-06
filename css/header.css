@@ -58,6 +58,10 @@ a.color_gray:hover{color:#bf967c;}
   top:22px;left:50%;
   margin-left:-55.5px;
 }
+.a_img{
+  display:block;
+  line-height:0;
+}
 .search_icon{
   position:absolute;
   width:22px;height:23px;
@@ -88,7 +92,7 @@ a.color_gray:hover{color:#bf967c;}
   padding:0 180px 30px;
 }
 .navsuv_l{
-  width:500px;min-height:200px;
+  width:497px;min-height:200px;
   background:url(../img/index/subNav_line.png) no-repeat right center;
   background-size:auto 90%;
   padding-top:30px;
@@ -96,20 +100,20 @@ a.color_gray:hover{color:#bf967c;}
   text-align: center;
 }
 .navsuv_r{
-  width:495px;min-height:200px;
+  width:498px;min-height:200px;
   padding-top:30px;
   text-align: center;
 }
-.navsuv_l p{margin-top:26px;}
-.navsuv_r p{margin-top:6px;}
-.navsuv_l p a{
+.dr_navsuv_first .navsuv_l p{margin-top:26px;}
+.dr_navsuv_first .navsuv_r p{margin-top:6px;}
+.dr_navsuv_first .navsuv_l p a{
   display:inline-block;
   height:29px;line-height:29px;
   background:url(../img/index/black_icon.png) no-repeat right center;
   color:#5e5e61;
   padding-right:40px;
 }
-.navsuv_r p a{color:#5e5e61;}
+.dr_navsuv_first .navsuv_r p a{color:#5e5e61;}
 .dr_navsuv_second img{
   width:200px;
   margin-top:20px;
@@ -124,13 +128,44 @@ a.color_gray:hover{color:#bf967c;}
   line-height:42px;
   text-align:center;
 }
-.dr_navsuv_second .dr_set a:hover{
+.dr_navsuv_second .dr_set a:hover,.navsuv_list_f1 p a:hover{
   color:#bf967c;
   border-bottom-color:#afafb0;
 }
-.dr_navsuv_third .float_l{
-  width:500px;
+.dr_navsuv_third .navsuv_list_f1,.dr_navsuv_fourth .navsuv_list_f1{
+  float:left;
+  margin-left:64px;
+  text-align:left;
 }
-.dr_navsuv_third .float_l{
-  width:495px;
+.navsuv_list_f1 h6{
+  font-size:14px;
+  font-weight:400;
+  color:#493428;
+  line-height:14px;
+}
+.navsuv_list_f1 p{
+  line-height:18px;
+  margin-top:23px;
+}
+.navsuv_list_f1 p a{
+  display:inline-block;
+  width:112px;
+  border-bottom:1px solid #dbdbdb;
+  font-size:12px;
+  color:#939393;
+}
+.navsuv_list_f1 .h6_mt{
+  margin-top:28px;
+}
+.navsuv_list_f1:last-child{
+  margin-left:106px;
+}
+.dr_navsuv_third .navsuv_r p,.dr_navsuv_fourth .navsuv_r,
+.dr_navsuv_seventh p,.dr_navsuv_eighth p{
+  margin-top:6px;
+  line-height:24px;
+  color:#5e5e61;
+}
+.dr_navsuv_third .navsuv_r p a,.dr_navsuv_fourth .navsuv_r p a,.dr_navsuv_seventh p a,.dr_navsuv_eighth p a{
+  color:#5e5e61;
 }
