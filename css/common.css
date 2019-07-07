@@ -3,11 +3,13 @@ body{
   min-width:1360px;
   font-size:14px;
   font-family:"microsoft yahei";
+  background:url(../img//index/back_r_o.jpg);
+  background-attachment:fixed;
 }
 a{text-decoration:none;}
 ul{list-style:none;}
 input{outline:0;}
-.w-1360{width:1360px;}
+.w-1360{width:1360px;margin:0 auto;}
 .font_small{font-size:12px;}
 .font_main_color{color:#bf967c;}
 .d_inline_block{display:inline-block;}

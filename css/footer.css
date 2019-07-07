@@ -91,8 +91,8 @@
   background:#868686;
   font-size:12px;
   line-height:70px;
+  padding:0 50px;
 }
-.w-1360{margin:0 auto;box-sizing:border-box;padding:0 50px;}
 .dr_gray_b .float_l a{display:inline-block;color:#c2c2c2;margin-right:20px;}
 .dr_gray_b .float_r a img{width:20px;vertical-align:middle;}
 .dr_gray_b .gov_icon{margin-top:7px;}
