@@ -54,10 +54,6 @@ a.color_gray:hover{color:#bf967c;}
   top:22px;left:50%;
   margin-left:-55.5px;
 }
-.a_img{
-  display:block;
-  line-height:0;
-}
 .search_icon{
   position:absolute;
   width:22px;height:23px;

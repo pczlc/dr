@@ -26,10 +26,7 @@
   border-radius:50%;
   margin:0 5px;
 }
-.banner_indicators li:hover{
-  cursor:pointer;
-  background:#666;
-}
+.banner_indicators li:hover{background:#666;}
 .dr_love_search{margin-top:40px;}
 .dr_love_search .f1{
   position:relative;
@@ -70,6 +67,7 @@
   padding:15px 0;
   text-align:center;
 }
+/* 修改placeholder颜色及兼容 */
 .id_input input::-webkit-input-placeholder{color:#fff;}
 input::-moz-placeholder {
   /* Mozilla Firefox 19+ */
@@ -88,4 +86,47 @@ input:-ms-input-placeholder {
   width:22px;height:22px;
   top:11.5px;right:16px;
   background:url(../img//index/ico-wseach.png) no-repeat;
+}
+.dr_family{margin-top:42px;}
+.family_left{float:left;width:694px;}
+.family_right{float:right;width:650px;margin-left:16px;}
+.family_item{position:relative;overflow:hidden;margin-bottom:16px;}
+.family_item img{transition:transform .5s;}
+.family_item img:hover{transform:scale(1.1);}
+.family_item p{
+  position:absolute;
+  bottom:38px;right:40px;
+  font-size:18px;
+  color:#333;
+}
+.family_left .family_item:first-child p{left:40px;right:auto;}
+.city_shop{width:551px;height:500px;background:#ded8d2;text-align:center;}
+.city_shop>img{margin-top:80px;}
+.input_city{
+  width:336px;height:30px;
+  position:relative;
+  background:#8b766c;
+  color:#ded8d2;
+  line-height:30px;
+  text-align:left;
+  margin:56px auto 0;
+  padding:6px 14px;
+}
+.input_city span{
+  display:inline-block;width:116px;
+  font-size:14px;text-align:center;
+  cursor:pointer;
+}
+.input_city input{
+  width:160px;height:30px;
+  background:url(../img/index/ico-gps1.png) no-repeat left center;
+  border:0;
+  color:#ded8d2;
+  padding-left:20px;
+}
+/* 设置placeholder颜色 */
+.input_city input::-webkit-input-placeholder{color:#ded8d2;}
+.input_city a{
+  position:absolute;
+  right:20px;top:10px;
 }

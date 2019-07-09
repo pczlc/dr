@@ -17,10 +17,18 @@ input{outline:0;}
 .float_r{float:right;}
 .float_l{float:left;}
 .mx_center{margin-left:auto;margin-right:auto;}
+.a_img{
+  display:block;
+  line-height:0;
+}
 .clear_after:after{
   content:"";
   display:block;
   clear:both;
+}
+.clear_m_t:before{
+  content:"";
+  display:table;
 }
 .d_flex{
   display:flex;
