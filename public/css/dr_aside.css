@@ -1,0 +1,7 @@
+.dr_aside{
+  position:fixed;
+  width:50px;
+  bottom:0;right:30px;
+  display:flex;
+  flex-direction:column;
+}
