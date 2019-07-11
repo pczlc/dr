@@ -1,14 +1,24 @@
 .dr_banner{
-  display:flex;
   position:relative;
   overflow: hidden;
+  height:620px;
 }
+#img_change>a{
+  position: absolute;
+  left:0;top:0;
+  opacity:0;
+  transition:all 1s linear;
+  line-height:0;
+  z-index:2
+}
+#img_change a.active{display:block;opacity:1;}
 .prev_button,.next_button{
   position:absolute;
   width:24px;height:45px;
   background:url(../img/index/ico-bannerBtn.png);
   top:50%;
   margin-top:-22.5px;
+  z-index:3;
 }
 .prev_button{left:50px;}
 .next_button{right:50px;background-position-x:-25px;}
@@ -19,6 +29,8 @@
   bottom:15px;
   margin-left: 50%; 
   margin-right: 50%; 
+  cursor:pointer;
+  z-index:3;
 }
 .banner_indicators li{
   width:10px;height:10px;
