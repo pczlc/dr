@@ -78,7 +78,7 @@ a.color_gray:hover{color:#bf967c;}
   font-size:12px;
   line-height:54px;
 }
-.dr_nav a:hover{color:#bf967c;}
+.dr_nav a:hover{color:#bf967c !important;}
 .dr_navsuv{
   display:none;
   position:absolute;

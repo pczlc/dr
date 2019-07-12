@@ -11,7 +11,7 @@
   line-height:0;
   z-index:2
 }
-#img_change a.active{display:block;opacity:1;}
+#img_change>a.active{opacity:1;}
 .prev_button,.next_button{
   position:absolute;
   width:24px;height:45px;
@@ -38,7 +38,7 @@
   border-radius:50%;
   margin:0 5px;
 }
-.banner_indicators li:hover{background:#666;}
+.banner_indicators li.active{background:#666;}
 .dr_love_search{margin-top:40px;}
 .dr_love_search .f1{
   position:relative;
