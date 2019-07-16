@@ -154,11 +154,13 @@
             break;
           }
         }
+        clearTimer();
       }
     }
-    //绑定下一章事件，同上
+    //绑定下一张事件，同上
     next.onclick=function(){
       next_change();
+      clearTimer();
     }
     //向下翻页方法实现
     function next_change(){
@@ -195,10 +197,17 @@
         for(var a of as){
           a.className="";
         }
-        as[i].className="active";      
+        as[i].className="active";   
+        clearTimer();
       }
     }
-    setInterval(next_change,4000);
+    //封装清除定时器函数
+    function clearTimer(){
+      clearInterval(timer);
+      timer=null;
+      timer=setInterval(next_change,4000);  
+    }
+    var timer=setInterval(next_change,4000);
   })()
 
 </script>
