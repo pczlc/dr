@@ -29,7 +29,7 @@
   margin-right:5px;
   cursor:pointer;
 }
-.pro_bg{background:#f4f2f3;}
+.pro_bg{background:#f4f2f3;padding-bottom:30px;}
 .pro_li{
   float:left;
   width:420px;height:490px;
@@ -62,3 +62,11 @@
 .pro_li .buy{background:#a98f83;border:1px solid #a98f83;color:#fff;}
 .pro_li .fav:hover{border:1px solid #8B766c;color:#8B766c;}
 .pro_li .buy:hover{background:#8b766c;border:1px solid #8b766c;}
+.page{
+  text-align:center;
+  font-size:14px;
+  color:#999;
+  line-height:19px;
+  margin-top:30px;
+}
+.page a{color:#999;margin:0 15px;}
