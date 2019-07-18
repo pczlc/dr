@@ -120,88 +120,51 @@
     </a>
   </div>
 </div>
+<script src="js/jquery-1.11.3.js"></script>
 <script>
-  (function(){
-    //找到prev元素
-    var prev=document.getElementsByClassName("prev_button")[0];
-    //找到next元素
-    var next=document.getElementsByClassName("next_button")[0];
-    //找到所有的指示器
-    var indicators=document.querySelectorAll(".banner_indicators li");
-    //绑定上一张事件
-    prev.onclick=function(){
-      //找到所有图片元素
-      var as=document.querySelectorAll("#img_change>a");
-      for(var i=0;i<as.length;i++){
-        //判断图片的状态为active
-        if(as[i].className==="active"){
-          //给对应的上一个指示器添加active属性
-          for(var indicator of indicators){
-            indicator.className="";
-          }
-          if(i===0){
-            indicators[as.length-1].className="active";
-          }else{
-            indicators[i-1].className="active";
-          }
-          //当为第一页时，点击上一页让最后一张显示，否则让下一张显示
-          as[i].className="";
-          if(i===0){
-            as[as.length-1].className="active";
-            break;
-          }else{
-            as[i-1].className="active";
-            break;
-          }
-        }
-      }
+  var $length=$("#img_change>a").length;
+  //定义跳转到指定位置函数
+  function moveTo(i){
+    //删除所有的active样式，并给当前位置加上active
+    $("#img_change>a").removeClass("active");
+    $($("#img_change>a")[i]).addClass("active");
+    $(".banner_indicators>li").removeClass("active");
+    $($(".banner_indicators>li")[i]).addClass("active");
+  }
+  //点击上一页，判断位置调用函数
+  $(".prev_button").click(function(){
+    if($("#img_change>a:first").hasClass("active")){
+      moveTo($length-1);
+    }else{
+      moveTo($("#img_change>a.active").index()-1);
     }
-    //绑定下一章事件，同上
-    next.onclick=function(){
-      next_change();
+    clearTimer();
+  })
+  //封装向下翻一页函数
+  function next(){
+    if($("#img_change>a:last").hasClass("active")){
+      moveTo(0);
+    }else{
+      moveTo($("#img_change>a.active").index()+1);
     }
-    //向下翻页方法实现
-    function next_change(){
-      var as=document.querySelectorAll("#img_change>a");
-      for(var i=0;i<as.length;i++){
-        if(as[i].className==="active"){
-          for(var indicator of indicators){
-            indicator.className="";
-          }
-          if(i===as.length-1){
-            indicators[0].className="active";
-          }else{
-            indicators[i+1].className="active";
-          }
-          as[i].className="";
-          if(i===as.length-1){
-            as[0].className="active";
-            break;
-          }else{
-            as[i+1].className="active";
-            break;
-          }
-        }
-      }
-    }
-    //循环绑定指示器事件
-    for(let i=0;i<indicators.length;i++){
-      indicators[i].onclick=function(){
-        for(var indicator of indicators){
-            indicator.className="";
-          }
-        indicators[i].className="active";
-        var as=document.querySelectorAll("#img_change>a");
-        for(var a of as){
-          a.className="";
-        }
-        as[i].className="active";      
-      }
-    }
-    //设置周期定时器自动翻页
-    setInterval(next_change,4000);
-    })()
-
+  }
+  //点击下一页，调用函数
+  $(".next_button").click(function(){
+    next();
+    clearTimer();
+  })
+  //利用事件委托，绑定指示器点击事件
+  $(".banner_indicators").on("click","li",function(){
+    moveTo($(this).index());
+    clearTimer();
+  })
+  //定义计时器
+  var timer=setInterval(next,4000);
+  //定义事件触发清除定时器函数
+  function clearTimer(){
+    clearInterval(timer);
+    timer=setInterval(next,4000);
+  }
 </script>
 </body>
 </html>

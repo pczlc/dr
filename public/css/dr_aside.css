@@ -4,4 +4,108 @@
   bottom:0;right:30px;
   display:flex;
   flex-direction:column;
+  background:#f4f2f3;
+  font-size:12px;
+  color:#8b766c;
+  z-index:5;
 }
+.dr_aside>div{position:relative;text-align:center;}
+/* 选择器，第2个到第7个 */
+.dr_aside>div:nth-child(-n+7):nth-child(n+2){
+  height:60px;
+  margin:5px 0;
+  padding-top:5px;
+  z-index:3;
+}
+.dr_aside>div:nth-child(7){z-index:2 !important;}
+.dr_aside>div:last-child{z-index:3;}
+.dr_aside>div:nth-child(2){margin-top:15px !important;}
+.dr_aside>div>a{
+  display:block;
+  background-image:url(../img/aside/icon_servie.png);
+  margin:0 auto;
+}
+.dr_svc1{
+  width:58px;
+  left:-4px;
+  background:#cebeb0;
+  padding-bottom:14px;
+}
+.dr_svc1>a{
+  width:50px;height:50px;
+  background:url(../img/aside/zxkf.gif) no-repeat !important;
+  
+}
+.dr_aside p:nth-child(2){line-height:28px;}
+.dr_aside .dr_svc1>p{color:#fff;line-height:16px;}
+.abs_l{
+  width:4px;height:4px;
+  position:absolute;
+  bottom:-4px;left:0;
+  background:url(../img/aside/icon_yleft.png);
+}
+.abs_r{
+  width:4px;height:4px;
+  position:absolute;
+  bottom:-4px;right:0;
+  background:url(../img/aside/icon_yright.png);
+}
+
+.dr_svc2 a{
+  width:30px;height:26px;
+  background-position:0 -279px;
+}
+.dr_svc3 a{
+  width:30px;height:29px;
+  background-position:0 -33px;
+}
+.dr_svc4 a{
+  width:24px;height:30px;
+  background-position:-3px -74px;
+}
+.dr_svc5 a{
+  width:30px;height:27px;
+  background-position:0 -120px;
+}
+.dr_svc6 a{
+  width:30px;height:30px;
+  background-position:0 -315px;
+}
+.dr_svc7 a{
+  width:18px;height:30px;
+  background-position:-6px -199px;
+}
+.dr_svc8 a{
+  width:48px;height:48px;
+  background-image:url(../img/aside/totop.jpg) !important;
+}
+.dr_aside>div>div:last-child{
+  position:absolute;
+  width:4rem;height:100%;
+  top:0;right:0px;
+  background:#fff;
+  line-height:65px;
+  color:#bc9e8a;
+  opacity:0;
+  z-index:1;
+}
+.dr_aside>div:hover div{
+  right:50px;
+  opacity:1;
+  transition:all .3s linear;
+}
+.dr_aside>div:not(:first-child):hover{background:#fff}
+.dr_svc7 img{
+  position:absolute;
+  top:-60px;right:0px;
+  padding-left:14px;
+  opacity:0;
+  background:#fff;
+  z-index:1;
+}
+.dr_svc7:hover img{
+  right:50px;
+  opacity:1;
+  transition:all .3s linear;
+}
+.dr_aside>div.dr_svc8 div{line-height:48px;}
