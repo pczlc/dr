@@ -6,7 +6,8 @@
 .gps_icon{ vertical-align:middle;}
 .font_small.font_main_color{line-height:20px;}
 a.total_store{margin-left:26px;color:#797979;}
-div.float_r{line-height:20px;}
+.dr_header{background:#fff;}
+.header_top div.float_r{line-height:20px;}
 .log_reg_btn{
   display:inline-block;
   height:20px;
@@ -14,7 +15,7 @@ div.float_r{line-height:20px;}
   color:#fff;
   padding:0 14px;
 }
-div.float_r ul{
+.header_top div.float_r ul{
   display:inline-block;
   background:#fff;
   padding:0 10px;
@@ -31,8 +32,8 @@ div.float_r ul{
 }
 .lan_chs:hover+li{height:40px;}
 .lan_choose:hover{height:40px;}
-div.float_r ul a{display:block;color:#8d8d8d;}
-div.float_r ul a:hover{color:#bf967c;}
+.header_top div.float_r ul a{display:block;color:#8d8d8d;}
+.header_top div.float_r ul a:hover{color:#bf967c;}
 .phone_icon{vertical-align:middle;}
 .color_gray{color:#8d8d8d;}
 a.color_gray:hover{color:#bf967c;}
@@ -69,6 +70,7 @@ a.color_gray:hover{color:#bf967c;}
   position:relative;
   left:0px;
   height:54px;
+  z-index:2;
 }
 .dr_nav>li>a{
   display:inline-block;

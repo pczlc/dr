@@ -13,7 +13,7 @@
   padding:0 6px;
 }
 .dr_bread>ul>li>a:hover{color:#9b745c;}
-.dr_bread>.search{float:right;}
+.dr_bread>.search{float:right;margin-right:20px;}
 .dr_bread>.search>div{border:1px solid #d7d7d7;}
 .dr_bread>.search input{
   border:0;

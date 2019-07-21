@@ -2,6 +2,7 @@
   position:relative;
   overflow: hidden;
   height:620px;
+  z-index:1;
 }
 #img_change>a{
   position: absolute;
@@ -39,7 +40,7 @@
   margin:0 5px;
 }
 .banner_indicators li.active{background:#666;}
-.dr_love_search{margin-top:40px;}
+.dr_love_search{margin-top:16px;}
 .dr_love_search .f1{
   position:relative;
   float:left;
@@ -99,10 +100,11 @@ input:-ms-input-placeholder {
   top:11.5px;right:16px;
   background:url(../img//index/ico-wseach.png) no-repeat;
 }
-.dr_family{margin-top:42px;}
+.dr_family{margin-top:16px;}
 .family_left{float:left;width:694px;}
 .family_right{float:right;width:650px;margin-left:16px;}
 .family_item{position:relative;overflow:hidden;margin-bottom:16px;}
+.family_left .family_item:first-child{margin-bottom:18px;}
 .family_item img{transition:transform .5s;}
 .family_item img:hover{transform:scale(1.1);}
 .family_item p{

@@ -10,6 +10,8 @@
 </head>
 <body>
   <div class="w-1360">
+    <!-- 头部 -->
+    <div id="header"></div>
     <!-- 顶部推荐图 -->
     <div>
       <a class="a_img" href="">
@@ -32,28 +34,25 @@
     </div>
     <!-- 商品列表 -->
     <div class="pro_bg">
-      <ul class="clear_after">
-        <li class="pro_li">
-          <a class="a_img" href="">
-            <img src="img\products\JUST YOU系列简奢款 18分 H色\1.jpg" alt="">
-          </a>
-          <p class="price">￥10719</p>
-          <p class="title">MYHEART系列简奢款 18分 H色</p>
-          <a class="fav" href="">收藏</a><!-- 消除行内元素换行导致的空白
-          --><a class="buy" href="">立即购买</a>
-        </li>
+      <ul id="pro_list" class="clear_after">
       </ul>
       <!-- 页码 -->
       <div class="page">
-        <span>共73件 商品</span>
-        <a href="">&lt;</a>
-        <span>1/7</span>
-        <a href="">&gt;</a>
+        <span class="total"></span>
+        <a class="prev_btn" href="">&lt;</a>
+        <span class="number"></span>
+        <a class="next_btn" href="">&gt;</a>
       </div>
     </div>
+    <!-- 底部 -->
+    <div id="footer"></div>
+    <!-- 右侧悬浮框 -->
+    <div id="dr_aside"></div>
   </div>
   <script src="js/jquery-1.11.3.js"></script>
-  <script src="js/ajax.js"></script>
   <script src="js/product_list.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/dr_aside.js"></script>
 </body>
 </html>

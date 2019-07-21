@@ -1,11 +1,11 @@
+.dr_footer{padding-top:50px;background:#fff;}
 .dr_footer_top{
   height:16px;
   background:url(../img/index/footer_rp.png) repeat-x;
 }
 .dr_footer_icon{
   width:1200px;
-  margin:0 auto;
-  padding:30px 0;
+  padding:30px 80px;
 }
 .dr_footer_icon li{
   padding:0 32px;
@@ -94,6 +94,7 @@
   padding:0 50px;
 }
 .dr_gray_b .float_l a{display:inline-block;color:#c2c2c2;margin-right:20px;}
+/* .dr_gray_b .float_r{margin-top:auto;margin-bottom:auto;} */
 .dr_gray_b .float_r a img{width:20px;vertical-align:middle;}
 .dr_gray_b .gov_icon{margin-top:7px;}
 .dr_gray_b span{font-size:12px;color:#ddd;}

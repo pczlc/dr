@@ -1,7 +1,8 @@
 const express=require('express');
+const bodyParser=require('body-parser');
 const userRouter=require('./routes/user.js');
 const productRouter=require('./routes/product.js')
-const bodyParser=require('body-parser');
+
 var app=express();
 app.listen(8080);
 
