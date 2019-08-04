@@ -23,10 +23,12 @@ router.get("/headerImg",(req,res)=>{
 router.get("/list",(req,res)=>{
   var page=req.query.page;
   var pageSize=req.query.pageSize;
+  if(!page){page=1};
+  if(!pageSize){pageSize=12};
   var now=(page-1)*pageSize;
   pageSize=parseInt(pageSize);
   var data={pros:[],count:0,len:0};
-  var sql="SELECT title,price,img FROM dr_ring LIMIT ?,?";
+  var sql="SELECT rid,title,price,img FROM dr_ring LIMIT ?,?";
   pool.query(sql,[now,pageSize],(err,result)=>{
     if(err) throw err;
     data.pros=result;
@@ -39,5 +41,20 @@ router.get("/list",(req,res)=>{
     })
   })
 })
-
+//商品详情
+router.get("/details",(req,res)=>{
+  var rid=req.query.rid;
+  var data={msg:[],imgs:{}};
+  var sql="SELECT title,price FROM dr_ring WHERE rid=?";
+  pool.query(sql,[rid],(err,result)=>{
+    if(err) throw err;
+    data.msg=result[0];
+    var sql="SELECT md FROM dr_ring_img WHERE ring_id=?";
+    pool.query(sql,[rid],(err,result)=>{
+      if(err) throw err;
+      data.imgs=result;
+      res.send(data);
+    })
+  })
+})
 module.exports=router;

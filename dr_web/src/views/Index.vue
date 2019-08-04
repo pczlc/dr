@@ -2,23 +2,7 @@
   <div class="dr_bg">
     <div class="w-1360">
       <header-vue></header-vue>
-      <!-- 轮播图 -->
-      <div class="dr_banner">
-        <div id="img_change">
-          <router-link to="Products" v-for="(elem,i) of blist" :key="i" :class="status[i]">
-            <img :src="`http://127.0.0.1:5050/${elem.img}`">
-          </router-link>
-        </div>
-        <!-- 轮播图翻页 -->
-        <a class="prev_button" href="javascript:;"></a>
-        <a class="next_button" href="javascript:;"></a>
-        <!-- 轮播图指示器 -->
-        <ul class="banner_indicators">
-          <li class="active"></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
+      <banner-vue></banner-vue>
       <div class="dr_love_search clear_after">
         <!-- 小视频 -->
         <div class="f1">
@@ -110,43 +94,16 @@
 </template>
 <script>
 import HeaderVue from '../components/Header.vue'
+import BannerVue from '../components/Banner.vue'
 import FooterVue from '../components/Footer.vue'
 import AsideVue from '../components/Aside.vue'
 export default {
   data(){
-    return {
-      blist:[],
-      status:[]
-    }
-  },
-  methods:{
-    getBanner(){
-      this.axios.get("index/getBanner").then(res=>{
-        this.blist=res.data;
-        for(var elem of this.blist){
-          this.status.push("");
-        }
-        this.status[0]="active";
-      })
-    }
-  },
-  created(){
-    this.getBanner();
-  },
-  mounted(){
-    setInterval(nextImg,3000);
-    function nextImg(){
-      for(var i=0;i<this.status.length;i++){
-        if(status[i]=="active"){
-          status[i+1]="active";
-          status[i]="";
-          break;
-        }
-      }
-    }
+    return {}
   },
   components:{
     HeaderVue,
+    BannerVue,
     FooterVue,
     AsideVue
   }
@@ -154,48 +111,6 @@ export default {
 
 </script>
 <style scoped>
-  .dr_banner{
-    position:relative;
-    overflow: hidden;
-    height:620px;
-    z-index:1;
-  }
-  #img_change>a{
-    position: absolute;
-    left:0;top:0;
-    opacity:0;
-    transition:all 1s linear;
-    line-height:0;
-    z-index:2
-  }
-  #img_change>a.active{opacity:1;}
-  #img_change>a:first-child{opacity:1;}
-  .prev_button,.next_button{
-    position:absolute;
-    width:24px;height:45px;
-    background:url(../../public/index/ico-bannerBtn.png);
-    top:50%;
-    margin-top:-22.5px;
-    z-index:3;
-  }
-  .prev_button{left:50px;}
-  .next_button{right:50px;background-position-x:-25px;}
-  .banner_indicators{
-    position:absolute;
-    display:flex;
-    bottom:15px;
-    margin-left: 50%; 
-    margin-right: 50%; 
-    cursor:pointer;
-    z-index:3;
-  }
-  .banner_indicators li{
-    width:10px;height:10px;
-    background:#fff;
-    border-radius:50%;
-    margin:0 5px;
-  }
-  .banner_indicators li.active{background:#666;}
   .dr_love_search{margin-top:16px;}
   .dr_love_search .f1{
     position:relative;

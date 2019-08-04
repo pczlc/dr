@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from './views/Index.vue'
 import Products from './views/Products.vue'
 import Details from './views/Details.vue'
+import NotFound from './views/NotFound.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -10,5 +11,6 @@ export default new Router({
     {path:'/',component:Index},
     {path:'/Products',component:Products},
     {path:'/Details',component:Details},
+    {path:'*',component:NotFound},
   ]
 })

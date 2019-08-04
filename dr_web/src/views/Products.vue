@@ -26,13 +26,13 @@
       <div class="pro_bg">
         <ul class="clear_after">
           <li class="pro_li" v-for="(elem,i) of pros" :key="i">
-            <a class="a_img" href="">
+            <router-link :to="`/Details?rid=${elem.rid}`" class="a_img">
               <img :src="`http://127.0.0.1:5050/${elem.img}`" alt="">
-            </a>
+            </router-link>
             <p class="price">￥{{elem.price}}</p>
             <p class="title">{{elem.title}}</p>
             <a class="fav" href="">收藏</a>
-            <a class="buy" href="">立即购买</a>
+            <router-link :to="`/Details?rid=${elem.rid}`" class="buy">立即购买</router-link>
           </li>
         </ul>
         <!-- 页码 -->
@@ -70,9 +70,12 @@ export default {
     getProduct(){
       var page=this.$route.query.page;
       var pageSize=this.$route.query.pageSize;
-      if(!page){page=1};
-      if(!pageSize){pageSize=9};
-      this.axios.get(`product/list?page=${page}&pageSize=${pageSize}`).then(res=>{
+      var reg=/^[1-9]\d*$/;
+      if(!reg.test(page)){page=1};
+      if(!reg.test(pageSize)){pageSize=9};
+      this.axios.get("product/list",{
+        params:{page,pageSize}
+      }).then(res=>{
         this.pros=res.data.pros;
         this.pcount=res.data.count;
         this.len=res.data.len;
