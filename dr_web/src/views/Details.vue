@@ -9,33 +9,12 @@
       </ul>
       <div class="w-1000">
         <div class="ringbuy_cort clear_after">
-          <div class="ring_imgs float_l">
-            <div class="md_img">
-              <img src="../../public/products/BELIEVE系列 典雅 50分 G色/1.jpg" alt="">
-              <div class="gray_bg"></div>
-            </div>
-            <div class="sm_img">
-              <span class="prev_btn visible"></span>
-              <span class="next_btn visible"></span>
-              <div class="sm_img_overflow">
-                <ul>
-                  <li v-for="(img,i) of imgs" :key="i">
-                    <img class="active" :src="`http://127.0.0.1:5050/${img.md}`" alt="">
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="lg_img"></div>
-            <ul class="ringbuy_share">
-              <span>分享到 :</span>
-              <a href=""></a>
-              <a href=""></a>
-              <a href=""></a>
-              <a href=""></a>
-              <a href=""></a>
-              <a href=""></a>
-            </ul>
-          </div>
+          <!-- 放大镜效果组件 -->
+          <magnifier-vue
+            :imgs="imgs"
+            :status="status"
+            :show="show"
+          ></magnifier-vue>
           <div class="ring_msg float_r">
             <h2 class="title">{{title}}</h2>
             <div class="price">
@@ -180,26 +159,47 @@
 import HeaderVue from '../components/Header.vue'
 import FooterVue from '../components/Footer.vue'
 import AsideVue from '../components/Aside.vue'
+import MagnifierVue from '../components/Magnifier.vue'
 export default {
   data(){
     return {
       title:"",
       price:"",
-      imgs:[]
+      imgs:[],
+      status:[]
+    }
+  },
+  methods:{
+    loadImg(){
+      var rid=this.$route.query.rid;
+      this.axios.get(`product/details?rid=${rid}`).then(res=>{
+        this.title=res.data.msg.title;
+        this.price=res.data.msg.price;
+        //保存图片数据，并创建一个数组保存图片active属性
+        for(var img of res.data.imgs){
+          this.imgs.push(img);
+          this.status.push("");
+        };
+        //初始化第一张图为active
+        this.status[0]="active";
+      })
+    },
+    show(i){
+      //鼠标移动到i时，让当前的class为active，并去除其他class
+      for(var j=0;j<this.status.length;j++){
+        this.status.splice(j,1,"");
+      }
+      this.status[i]="active";
     }
   },
   created(){
-    var rid=this.$route.query.rid;
-    this.axios.get(`product/details?rid=${rid}`).then(res=>{
-      this.title=res.data.msg.title;
-      this.price=res.data.msg.price;
-      this.imgs=res.data.imgs;
-    })
+    this.loadImg();
   },
   components:{
     HeaderVue,
     FooterVue,
-    AsideVue
+    AsideVue,
+    MagnifierVue
   }
 }
 </script>
@@ -217,82 +217,6 @@ export default {
   .dr_bread>li>a:hover{color:#8b766c;}
   .w-1000{width:1000px;margin:0 auto;text-align:center;}
   .ringbuy_cort{padding-bottom:60px;}
-  .ring_imgs,.md_img>img{width:460px;}
-  .ring_imgs{position:relative;}
-  .md_img{position:relative;}
-  .md_img>.gray_bg{
-    position:absolute;
-    top:0;left:0;
-    width:150px;height:150px;
-    background:rgba(153, 153, 153,.4);
-    cursor:move;
-  }
-  .md_img>img{box-sizing:border-box;border:1px solid #f3f3f3;}
-  .sm_img{margin:20px 0;position:relative;}
-  .prev_btn,.next_btn{
-    position:absolute;
-    top:50%;margin-top:-9.5px;
-    width:10px;height:19px;
-    background:url(../../public/icon/pre_next.png) no-repeat;
-  }
-  .prev_btn{left:15px;background-position:0 0;}
-  .next_btn{right:15px;background-position:-10px -20px;}
-  .prev_btn.visible{background-position:0 -20px;}
-  .next_btn.visible{background-position:-10px 0;}
-  .sm_img_overflow{
-    width:384px;
-    overflow:hidden;
-    margin:0 auto;
-  }
-  .sm_img_overflow ul{display:flex;}
-  .sm_img_overflow li{
-    width:60px;height:60px;
-    margin-right:20px;
-  }
-  .sm_img_overflow img{
-    width:100%;
-    box-sizing:border-box;
-  }
-  .sm_img_overflow img.active{
-    border:1px solid #ffa6a6;
-  }
-  .lg_img{
-    position:absolute;
-    display:none;
-    right:-200px;top:0;
-    width:200px;height:200px;
-    background:url("../../public/products/BELIEVE系列 典雅 50分 G色/1.jpg") no-repeat;
-    background-size:200%;  
-    border:1px solid rgb(204,204,204);
-    z-index:999;
-  }
-  .ringbuy_share{
-    text-align:center;
-    line-height:26px;
-    padding:10px;
-  }
-  .ringbuy_share>span{
-    display:inline-block;
-    font-size:12px;
-    color:#7f7f7f;
-    margin-right:3px;
-  }
-  .ringbuy_share>a{
-    display:inline-block;
-    width:26px;height:26px;
-    background:url(../../public/icon/ico-shares.png);
-    margin:0 2px;
-    vertical-align:middle;
-    outline: 0;border:0;font-size:0;
-  }
-  .ringbuy_share>a:nth-child(2){background-position:0 0;}
-  .ringbuy_share>a:nth-child(3){background-position:-31px 0;}
-  .ringbuy_share>a:nth-child(4){background-position:-62px 0;}
-  .ringbuy_share>a:nth-child(5){background-position:-93px 0;}
-  .ringbuy_share>a:nth-child(6){background-position:0 -34px;}
-  .ringbuy_share>a:nth-child(7){background-position:-124px 0;}
-  .ringbuy_share>a:hover{background-position-y:-68px;}
-  .ringbuy_share>a:nth-child(6):hover{background-position:0 -102px;}
   .ring_msg{width:520px;text-align:left;}
   .ring_msg>.title{font-size:24px;font-weight:400;}
   .ring_msg>.price{

@@ -2,16 +2,16 @@
   <!-- 轮播图 -->
   <div class="dr_banner">
     <div id="img_change">
-      <router-link to="Products" v-for="(elem,i) of imgList" :key="i" :class="status[i]">
+      <router-link to="Products" v-for="(elem,i) of imgList" :key="i" :class="elem.status">
         <img :src="`http://127.0.0.1:5050/${elem.img}`">
       </router-link>
     </div>
     <!-- 轮播图翻页 -->
-    <a class="prev_button" @click="prevBtn" href="javascript:;"></a>
-    <a class="next_button" @click="nextBtn" href="javascript:;"></a>
+    <a class="prev_button" @click="changeBtn(-1)" href="javascript:;"></a>
+    <a class="next_button" @click="changeBtn" href="javascript:;"></a>
     <!-- 轮播图指示器 -->
     <ul class="banner_indicators">
-      <li v-for="(elem,i) of imgList" :key="i" :class="status[i]"></li>
+      <li v-for="(elem,i) of imgList" :key="i" :class="elem.status" @click="moveTo(i)"></li>
     </ul>
   </div>
 </template>
@@ -21,42 +21,78 @@ export default {
   data(){
     return {
       imgList:[],
-      status:[],
       interval:null
     }
   },
   methods:{
-    nextImg(){
-      //遍历数组，判断有active属性，下一项赋值为active，并清除当前的active
-      for(var i=0;i<this.status.length;i++){
-        if(this.status[i]=="active"){
-          if(i<this.status.length-1){
-            this.status[i+1]="active";
-          }else{
-            this.status[0]="active";
+    load(){
+      this.axios.get("index/getBanner").then(res=>{
+          var list=res.data;
+          for(var elem of list){
+            elem.status="";
           }
-          this.status[i]="";
-          console.log(this.status)
-          break;
+          //第一项初始化为active
+          list[0].status="active";
+          this.imgList=list;
+          //初始时启动计时器
+          this.interval=setInterval(this.changeImg,4000);
+      });
+    },
+    changeImg(i){
+      //将重复使用的变量取个别名
+      var imgs=this.imgList;
+      var len=this.imgList.length;
+      //为-1跳到上一张，否则跳到下一张
+      if(i==-1){
+        //遍历数组，判断有active属性，下一项赋值为active，并清除当前的active
+        for(var i=0;i<len;i++){
+          if(imgs[i].status=="active"){
+            imgs[i].status="";
+            if(i==0){
+              imgs[len-1].status="active";
+            }else{
+              imgs[i-1].status="active";
+            }
+            //更改数组的值，页面不会发生改变，通过拷贝数组改变地址的方式实现页面更新
+            Object.assign(this.imgList,imgs);
+            break;
+          }
+        }
+      }else{
+        for(var i=0;i<len;i++){
+          if(imgs[i].status=="active"){
+            imgs[i].status="";
+            if(i<len-1){
+              imgs[i+1].status="active";
+            }else{
+              imgs[0].status="active";
+            }
+            //更改数组的值，页面不会发生改变，通过拷贝数组改变地址的方式实现页面更新
+            Object.assign(this.imgList,imgs);
+            break;
+          }
         }
       }
     },
-    prevBtn(){
-
+    changeBtn(i){
+      clearInterval(this.interval);
+      this.changeImg(i);
+      this.interval=setInterval(this.changeImg,4000);
     },
-    nextBtn(){
-
+    moveTo(i){
+      clearInterval(this.interval);
+      for(var j=0;j<this.imgList.length;j++){
+        if(this.imgList[j].status="active"){
+          this.imgList[j].status="";
+        }
+      }
+      this.imgList[i].status="active";
+      Object.assign(this.imgList,this.imgList);
+      this.interval=setInterval(this.changeImg,4000);
     }
   },
   created(){
-    this.axios.get("index/getBanner").then(res=>{
-        this.imgList=res.data;
-        //初始化保存状态的数组长度
-        this.status.length=this.imgList.length;
-        //第一项初始化为active
-        this.status[0]="active";
-        this.interval=setInterval(this.nextImg,3000);
-    })
+    this.load();
   }
 }
 </script>

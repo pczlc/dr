@@ -44,7 +44,7 @@ router.get("/list",(req,res)=>{
 //商品详情
 router.get("/details",(req,res)=>{
   var rid=req.query.rid;
-  var data={msg:[],imgs:{}};
+  var data={msg:[],imgs:[]};
   var sql="SELECT title,price FROM dr_ring WHERE rid=?";
   pool.query(sql,[rid],(err,result)=>{
     if(err) throw err;
@@ -52,7 +52,9 @@ router.get("/details",(req,res)=>{
     var sql="SELECT md FROM dr_ring_img WHERE ring_id=?";
     pool.query(sql,[rid],(err,result)=>{
       if(err) throw err;
-      data.imgs=result;
+      for(var i=0;i<result.length;i++){
+        data.imgs[i]=result[i].md;
+      }
       res.send(data);
     })
   })
