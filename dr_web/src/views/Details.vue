@@ -13,7 +13,7 @@
           <magnifier-vue
             :imgs="imgs"
             :status="status"
-            :show="show"
+            :showMd="showMd"
           ></magnifier-vue>
           <div class="ring_msg float_r">
             <h2 class="title">{{title}}</h2>
@@ -184,7 +184,7 @@ export default {
         this.status[0]="active";
       })
     },
-    show(i){
+    showMd(i){
       //鼠标移动到i时，让当前的class为active，并去除其他class
       for(var j=0;j<this.status.length;j++){
         this.status.splice(j,1,"");
