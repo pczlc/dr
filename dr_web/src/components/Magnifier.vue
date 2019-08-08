@@ -19,14 +19,16 @@
       </div>
     </div>
     <div class="sm_img">
-      <span class="prev_btn visible"></span>
-      <span class="next_btn visible"></span>
+      <span class="prev_btn visible" @click="prevBtn"></span>
+      <span class="next_btn visible" @click="nextBtn"></span>
       <div class="sm_img_overflow">
-        <ul>
+        <ul class="sm_rings" :style="`width:${(imgs.length+2)*80}px`">
           <li v-for="(img,i) of imgs" :key="i">
             <img :class="status[i]" :src="`http://127.0.0.1:5050/${img}`" 
             @mouseover="showMd(i)">
           </li>
+          <li><img src="../../public/index/logo.png" alt=""></li>
+          <li><img src="../../public/index/logo.png" alt=""></li>
         </ul>
       </div>
     </div>
@@ -43,6 +45,11 @@
 </template>
 <script>
 export default {
+  data(){
+    return {
+      times:0, //记录左移次数
+    }
+  },
   props:{
     imgs:{type:Array},
     status:{type:Array},
@@ -50,33 +57,48 @@ export default {
   },
   methods:{
     showLg(e){
+      //获取滑块元素
+      var gary_bg=document.getElementsByClassName("gray_bg")[0];
+      //设置为显示
+      gary_bg.style.display="block";
       //显示大图片，并替换对应的url
-      var src=document.querySelector(".img_item>.active").src;
+      //防止一进入页面就hover会报错，先判断是否加载完成
+      var md=document.querySelector(".img_item>.active");
+      if(md==null){return;}
+      var src=md.src;
       var lg=document.getElementsByClassName("white_bg")[0];
       lg.style.display="block";
       lg.firstChild.src=src;
-      //获取鼠标位置
-      var x=e.offsetX;
-      var y=e.offsetY;
-      //大图背景随鼠标位置改变
-      lg.firstChild.style.left=-2*(x)+75+"px"
-      lg.firstChild.style.top=-2*(y)+75+"px"
+      //获取鼠标位置减去滑块一半的宽度
+      var x=e.offsetX-75;
+      var y=e.offsetY-75;
       //设置滑块的区域
-      if(x<75){x=75;}else if(x>385){x=385;}
-      if(y<75){y=75;}else if(y>385){y=385;}
-      //获取滑块元素
-      var gary_bg=document.getElementsByClassName("gray_bg")[0];
+      if(x<0){x=0;}else if(x>310){x=310;}
+      if(y<0){y=0;}else if(y>310){y=310;}
       //将滑块位置换为鼠标位置
-      gary_bg.style.left=x-75+"px";
-      gary_bg.style.top=y-75+"px";
+      gary_bg.style.left=x+"px";
+      gary_bg.style.top=y+"px";
+      //大图背景随鼠标位置改变
+      lg.firstChild.style.left=-(920-200)/(460-150)*x+"px";
+      lg.firstChild.style.top=-(920-200)/(460-150)*y+"px";
     },
     hideLg(){
       var lg=document.getElementsByClassName("white_bg")[0];
+      var gary_bg=document.getElementsByClassName("gray_bg")[0];
       lg.style.display="none";
+      gary_bg.style.display="none";
+    },
+    prevBtn(){
+      
+    },
+    nextBtn(){
+      记得去除两张测试图
+      if(this.imgs.length+2-5-this.times>0){
+        this.times++;
+        var ul=document.getElementsByClassName("sm_rings")[0];
+        ul.style["margin-left"]=-this.times*80+"px";
+      }
     }
-  },
-  mounted(){
-    
   }
 }
 </script>
@@ -98,6 +120,7 @@ export default {
   }
   .gray_bg{
     position:absolute;
+    display:none;
     top:0;left:0;
     width:150px;height:150px;
     background:rgba(153, 153, 153,.4);
@@ -123,7 +146,7 @@ export default {
   .lg_img{
     position:absolute;
     left:0;top:0;
-    width:980px;height:980px;
+    width:920px;height:920px;
   }
   .sm_img{margin:20px 0;position:relative;}
   .prev_btn,.next_btn{
@@ -132,8 +155,8 @@ export default {
     width:10px;height:19px;
     background:url(../../public/icon/pre_next.png) no-repeat;
   }
-  .prev_btn{left:15px;background-position:0 0;}
-  .next_btn{right:15px;background-position:-10px -20px;}
+  .prev_btn{left:15px;background-position:0 0;cursor:pointer;}
+  .next_btn{right:15px;background-position:-10px -20px;cursor:pointer;}
   .prev_btn.visible{background-position:0 -20px;}
   .next_btn.visible{background-position:-10px 0;}
   .sm_img_overflow{
@@ -141,12 +164,18 @@ export default {
     overflow:hidden;
     margin:0 auto;
   }
-  .sm_img_overflow ul{display:flex;}
-  .sm_img_overflow li{
+  .sm_rings{transition:all .3s linear;}
+  .sm_rings::after{
+    content:"";
+    display:block;
+    clear:both;
+  }
+  .sm_rings li{
+    float:left;
     width:60px;height:60px;
     margin-right:20px;
   }
-  .sm_img_overflow img{
+  .sm_rings img{
     width:100%;
     box-sizing:border-box;
   }

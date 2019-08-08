@@ -35,7 +35,7 @@
             <div class="ringbuy_choose">
               <div class="choose_first">
                 <span>戒托材质</span>
-                <div>
+                <div @click="active">
                   <a href="javascript:;" class="choose_btn active">PT950</a>
                   <a href="javascript:;" class="choose_btn">白18K金</a>
                   <span class="ringbuy_msg">本商品价格为单只戒指售价，材质调整后金额会自动调整。</span>
@@ -43,7 +43,7 @@
               </div>
               <div class="choose_second">
                 <span>搭配主钻</span>
-                <div>
+                <div @click="active">
                   <a href="javascript:;" class="choose_btn active">50分H色</a>
                   <a href="javascript:;" class="choose_btn">55分D色</a>
                   <a href="javascript:;" class="choose_btn">55分H色</a>
@@ -190,6 +190,20 @@ export default {
         this.status.splice(j,1,"");
       }
       this.status[i]="active";
+    },
+    //事件委托，给a标签的父元素绑事件
+    active(e){
+      //将触发事件的元素保存
+      var a=e.target;
+      if(a.tagName=="A"){
+        //找到兄弟元素，并移除active
+        var parent=a.parentNode.children;
+        console.log(parent)
+        for(var elem of parent){
+          elem.classList.remove("active");
+        }
+        a.classList.add("active");
+      }
     }
   },
   created(){
