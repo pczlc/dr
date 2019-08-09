@@ -198,7 +198,6 @@ export default {
       if(a.tagName=="A"){
         //找到兄弟元素，并移除active
         var parent=a.parentNode.children;
-        console.log(parent)
         for(var elem of parent){
           elem.classList.remove("active");
         }

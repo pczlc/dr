@@ -1,5 +1,5 @@
 <template>
-  <div class="dr_aside">
+  <div class="dr_aside" @mouseover="showBg" @mouseout="hideBg">
     <div class="dr_svc1">
       <a href="javascript:;"></a>
       <p>在线<br>客服</p>
@@ -9,35 +9,42 @@
     <div class="dr_svc2">
       <a href="javascript:;"></a>
       <p>预约</p>
+      <div class="show"></div>
       <div>预约进店</div>
     </div>
     <div class="dr_svc3">
       <a href="javascript:;"></a>
       <p>购物车</p>
+      <div class="show"></div>
       <div>购物车</div>
     </div>
     <div class="dr_svc4">
       <a href="javascript:;"></a>
       <p>订单</p>
+      <div class="show"></div>
       <div>我的订单</div>
     </div>
     <div class="dr_svc5">
       <a href="javascript:;"></a>
       <p>收藏</p>
+      <div class="show"></div>
       <div>我的收藏</div>
     </div>
     <div class="dr_svc6">
       <a href="javascript:;"></a>
       <p>新人礼</p>
+      <div class="show"></div>
       <div>新人礼包</div>
     </div>
     <div class="dr_svc7">
       <a href="javascript:;"></a>
       <p>手机端</p>
+      <div class="show"></div>
       <img src="../../public/aside/ewm.jpg" alt="">
     </div>
     <div class="dr_svc8">
       <a href="#"></a>
+      <div class="show"></div>
       <div>返回顶部</div>
     </div>
   </div>
@@ -45,7 +52,18 @@
 
 <script>
 export default {
-
+  methods:{
+    showBg(e){
+      if(e.target.className=="show"){
+        e.target.parentNode.style.background="#fff";
+      }
+    },
+    hideBg(e){
+      if(e.target.className=="show"){
+        e.target.parentNode.style.background="transparent";
+      }
+    }
+  }
 }
 </script>
 
@@ -67,10 +85,7 @@ export default {
     height:60px;
     margin:5px 0;
     padding-top:5px;
-    z-index:3;
   }
-  .dr_aside>div:nth-child(7){z-index:2 !important;}
-  .dr_aside>div:last-child{z-index:3;}
   .dr_aside>div:nth-child(2){margin-top:15px !important;}
   .dr_aside>div>a{
     display:block;
@@ -86,7 +101,6 @@ export default {
   .dr_svc1>a{
     width:50px;height:50px;
     background:url(../../public/aside/zxkf.gif) no-repeat !important;
-    
   }
   .dr_aside p:nth-child(2){line-height:28px;}
   .dr_aside .dr_svc1>p{color:#fff;line-height:16px;}
@@ -102,7 +116,6 @@ export default {
     bottom:-4px;right:0;
     background:url(../../public/aside/icon_yright.png);
   }
-
   .dr_svc2 a{
     width:30px;height:26px;
     background-position:0 -279px;
@@ -141,12 +154,12 @@ export default {
     opacity:0;
     z-index:1;
   }
-  .dr_aside>div:hover div{
-    right:50px;
-    opacity:1;
+  .show:hover+div,.show:hover+img{
+    right:50px !important;
+    opacity:1 !important;
     transition:all .3s linear;
   }
-  .dr_aside>div:not(:first-child):hover{background:#fff}
+  /* .dr_aside>div:not(:first-child):hover{background:#fff} */
   .dr_svc7 img{
     position:absolute;
     top:-60px;right:0px;
@@ -155,10 +168,11 @@ export default {
     background:#fff;
     z-index:1;
   }
-  .dr_svc7:hover img{
-    right:50px;
-    opacity:1;
-    transition:all .3s linear;
-  }
   .dr_aside>div.dr_svc8 div{line-height:48px;}
+  .show{
+    width:100%;height:100%;
+    position:absolute;
+    left:0;top:0;
+    z-index:2;
+  }
 </style>

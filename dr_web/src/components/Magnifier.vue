@@ -19,16 +19,15 @@
       </div>
     </div>
     <div class="sm_img">
-      <span class="prev_btn visible" @click="prevBtn"></span>
-      <span class="next_btn visible" @click="nextBtn"></span>
+      <span class="prev_btn visible" @click="changeBtn(-1)"></span>
+      <span class="next_btn visible" @click="changeBtn(1)"></span>
       <div class="sm_img_overflow">
-        <ul class="sm_rings" :style="`width:${(imgs.length+2)*80}px`">
+        <!-- 获取图片个数动态赋值宽，通过times赋值margin值 -->
+        <ul class="sm_rings" :style="`width:${(imgs.length+2)*80}px;margin-left:-${times*80}px`">
           <li v-for="(img,i) of imgs" :key="i">
             <img :class="status[i]" :src="`http://127.0.0.1:5050/${img}`" 
             @mouseover="showMd(i)">
           </li>
-          <li><img src="../../public/index/logo.png" alt=""></li>
-          <li><img src="../../public/index/logo.png" alt=""></li>
         </ul>
       </div>
     </div>
@@ -57,6 +56,7 @@ export default {
   },
   methods:{
     showLg(e){
+      e.stopPropagation();
       //获取滑块元素
       var gary_bg=document.getElementsByClassName("gray_bg")[0];
       //设置为显示
@@ -88,15 +88,16 @@ export default {
       lg.style.display="none";
       gary_bg.style.display="none";
     },
-    prevBtn(){
-      
-    },
-    nextBtn(){
-      记得去除两张测试图
-      if(this.imgs.length+2-5-this.times>0){
-        this.times++;
-        var ul=document.getElementsByClassName("sm_rings")[0];
-        ul.style["margin-left"]=-this.times*80+"px";
+    changeBtn(i){
+      //图片左右移功能
+      if(i==1){
+        if(this.imgs.length-5-this.times>0){
+          this.times++;
+        }
+      }else{
+        if(this.times>0){
+          this.times--;
+        }
       }
     }
   }

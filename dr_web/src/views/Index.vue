@@ -5,7 +5,7 @@
       <banner-vue></banner-vue>
       <div class="dr_love_search clear_after">
         <!-- 小视频 -->
-        <div class="f1">
+        <div class="f1" @click="showVideo">
           <div class="play_button"></div>
           <img src="../../public/index/15504818355c6a79abcae4d.jpg" alt="">
         </div>
@@ -90,6 +90,12 @@
       <footer-vue></footer-vue>
       <aside-vue></aside-vue>
     </div>
+    <div class="paris_video" :style="`display:${videoDis}`">
+      <div>
+        <video src="../../public/index/paris.mp4" controls></video>
+        <div class="close" @click="closeVideo"></div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -99,7 +105,21 @@ import FooterVue from '../components/Footer.vue'
 import AsideVue from '../components/Aside.vue'
 export default {
   data(){
-    return {}
+    return {
+      videoDis:"none"
+    }
+  },
+  methods:{
+    showVideo(){
+      this.videoDis="block";
+      var v=document.querySelector(".paris_video video");
+      v.play();
+    },
+    closeVideo(){
+      this.videoDis="none";
+      var v=document.querySelector(".paris_video video");
+      v.pause();
+    }
   },
   components:{
     HeaderVue,
@@ -240,5 +260,25 @@ export default {
     color:#fff;
     line-height:18px;
     text-align:center;
+  }
+  .paris_video{
+    display:none;
+    position:fixed;
+    left:0;top:0;
+    width:100%;height:100%;
+    background-color:rgba(0,0,0,0.5);
+    z-index:9999;
+  }
+  .paris_video>div{
+    position:absolute;
+    top:20%;left:50%;
+    margin-left:-600px;
+  }
+  .paris_video video{display:block}
+  .paris_video .close{
+    position:absolute;
+    width:40px;height:40px;
+    right:0;top:-40px;
+    background:url(../../public/index/sp_close.jpg) no-repeat;
   }
 </style>

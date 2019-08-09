@@ -233,6 +233,10 @@ export default {
     width:1360px;
     margin:0 auto;
   }
+  .dr_header::before{
+    content:"";
+    display:table;
+  }
   .header_top{
     height:140px;
     position:relative;
