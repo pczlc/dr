@@ -56,7 +56,6 @@ export default {
   },
   methods:{
     showLg(e){
-      e.stopPropagation();
       //获取滑块元素
       var gary_bg=document.getElementsByClassName("gray_bg")[0];
       //设置为显示
@@ -100,6 +99,12 @@ export default {
         }
       }
     }
+  },
+  mounted(){
+    var nav=document.getElementsByClassName("dr_nav")[0]
+    nav.addEventListener("mousemove",()=>{
+      this.showLg=function(){}
+    })
   }
 }
 </script>
@@ -110,6 +115,7 @@ export default {
   .img_item{
     position:relative;
     width:100%;height:100%;
+    z-index:1;
   }
   .tr_bg{
     position:absolute;

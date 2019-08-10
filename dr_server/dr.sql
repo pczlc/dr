@@ -338,3 +338,7 @@ INSERT INTO dr_index_banner VALUES
 (null,"img/index/15609380435d0a063b37508.jpg",null),
 (null,"img/index/15414875845be13be0a0a14.jpg",null),
 (null,"img/index/15597244445cf7819ca6104.jpg",null);
+
+/*插入用户数据*/
+INSERT INTO dr_user(uname,upwd,email,user_name) VALUES
+("zzz","123456","abc@123.com","lalala");

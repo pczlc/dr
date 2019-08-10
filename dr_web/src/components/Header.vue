@@ -7,7 +7,17 @@
         <span class="font_small font_main_color">成都</span>
         <a class="total_store font_small" href="javascript:;">全国店铺 ></a>
         <div class="float_r clear_after">
-          <a class="log_reg_btn font_small" href="">注册/登录</a>
+          <router-link v-show="!isLogin" to="/login" class="log_reg_btn font_small">注册/登录</router-link>
+          <div v-show="isLogin" class="user">
+            <a href="javascript:;">欢迎 {{userName}}</a>
+            <div class="user_handle">
+              <a href="javascript:;">我的订单</a>
+              <a href="">购物车</a>
+              <a href="javascript:;">我的收藏</a>
+              <a href="javascript:;">个人中心</a>
+              <a href="javascript" @click="exit">退出</a>
+            </div>
+          </div>
           <ul class="font_small">
             <li class="lan_chs">
               <a href="javascript:;">中文(简体)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -202,12 +212,26 @@
 export default {
   data(){
     return {
+      userName:"",
+      isLogin:false,
       hlist:{},
       leftDft:"",
       rightDft:""
     }
   },
   methods:{
+    getSeesion(){
+      this.axios.get("user/getSession").then(res=>{
+        if(res.data.code==1){
+          this.userName=res.data.user_name;
+          this.isLogin=true;
+        }
+      })
+    },
+    exit(){
+      this.axios.get("user/exit");
+      this.isLogin=false;
+    },
     loadHeader(){
       this.axios.get("product/headerImg").then(res=>{
         this.hlist=res.data;
@@ -225,6 +249,7 @@ export default {
   },
   created(){
     this.loadHeader();
+    this.getSeesion();
   }
 }
 </script>
@@ -266,6 +291,7 @@ export default {
     position:absolute;
     z-index:2;
     height:0px;
+    background:#fff;
     overflow:hidden;
     transition:all 0.3s linear; 
   }
@@ -329,6 +355,7 @@ export default {
     min-height:230px;
     background:#fff;
     padding:0 180px 30px;
+    z-index:9999;
   }
   .dr_nav>li>a:hover+div{display:block;}
   .dr_navsuv:hover{display:block;}
@@ -411,4 +438,35 @@ export default {
   .dr_navsuv_third .navsuv_r p a,.dr_navsuv_fourth .navsuv_r p a,.dr_navsuv_seventh p a,.dr_navsuv_eighth p a{
     color:#5e5e61;
   }
+  .user{
+    display:inline-block;
+    height:20px;
+    line-height:20px;
+    position:relative;
+    margin-right:6px;
+  }
+  .user a{display:inline-block;font-size:12px;line-height:20px;}
+  .user>a{
+    padding:0 15px;
+    background:url(../../public/header/bottom.png) no-repeat right center;
+    color:#9b745c;
+  }
+  .user_handle{
+    position:absolute;
+    width:90px;
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    border:1px solid #f1f1f1;
+    background:#fff;
+    padding:8px 17px;
+    left:50%;top:20px;
+    margin-left:-45px;
+    display:none;
+  }
+  .user_handle>a{color:#bbb;}
+  .user_handle>a:hover{color:#9b745c;}
+  .user>a:hover+div{display:block;}
+  .user_handle:hover{display:block;}
 </style>
