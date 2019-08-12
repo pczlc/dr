@@ -43,8 +43,8 @@
       <img src="../../public/aside/ewm.jpg" alt="">
     </div>
     <div class="dr_svc8">
-      <a href="#"></a>
-      <div class="show"></div>
+      <a href="javascript:;"></a>
+      <div class="show" @click="toTop"></div>
       <div>返回顶部</div>
     </div>
   </div>
@@ -62,6 +62,9 @@ export default {
       if(e.target.className=="show"){
         e.target.parentNode.style.background="transparent";
       }
+    },
+    toTop(){
+      window.scrollTo(0,0);
     }
   }
 }

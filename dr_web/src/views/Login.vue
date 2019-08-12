@@ -41,11 +41,11 @@
             <div class="login_input">
               <div v-show="regErrDis" class="errMsg">{{regErrMsg}}</div>
               <input v-model="regUname" class="uname_input" type="text" placeholder="请输入您的邮箱/手机号">
-              <input v-model="regUpwd" class="upwd_input" type="password" placeholder="请输入密码">
+              <input v-model="regUpwd" class="upwd_input" type="password" placeholder="请输入6~10位字母和数字密码">
               <div class="agree">
-                <input id="agree" type="checkbox">
+                <input id="agree" type="checkbox" v-model="regAgree">
                 <label for="agree">同意Darry Ring用户</label>
-                <a href="">注册协议和隐私条款</a>
+                <a href="javascript:;">注册协议和隐私条款</a>
               </div>
               <a class="login_btn" href="javascript:;" @click="register">注册</a>
             </div>            
@@ -68,7 +68,7 @@ import FooterVue from '../components/Footer.vue'
 export default {
   data(){
     return {
-      show:true,
+      show:true,regAgree:false,
       logErrDis:false,logErrMsg:"",logUname:"",logUpwd:"",
       regErrDis:false,regErrMsg:"",regUname:"",regUpwd:"",
     }
@@ -102,7 +102,53 @@ export default {
       })
     },
     register(){
-
+      var uname=this.regUname;
+      var upwd=this.regUpwd;
+      var agree=this.regAgree;
+      if(uname==""){
+        this.regErrDis=true;
+        this.regErrMsg="用户名不能为空";
+        return;
+      }
+      if(upwd==""){
+        this.regErrDis=true;
+        this.regErrMsg="密码不能为空";
+        return;
+      }
+      if(!agree){
+        this.regErrDis=true;
+        this.regErrMsg="请阅读并同意用户注册相关协议";
+        return;
+      }
+      var reg1=/^((\d{11})|([a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)+))$/i;
+      var reg2=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9a-z]{6,10}$/i;
+      if(!reg1.test(uname)){
+        this.regErrDis=true;
+        this.regErrMsg="用户名格式错误";
+        return;
+      }
+      if(!reg2.test(upwd)){
+        this.regErrDis=true;
+        this.regErrMsg="密码格式错误";
+        return;
+      }
+      var userObj=this.qs.stringify({uname,upwd});//简写对象解构
+      this.axios.post("user/register",userObj).then(res=>{
+        var result=res.data;
+        if(result.code==-1){
+          this.regErrDis=true;
+          this.regErrMsg="该手机号或邮箱已存在";
+        }else{
+          //登录账户并跳转至首页
+          this.axios.get("user/login",{
+            params:{uname,upwd}
+          }).then(res=>{
+            if(res.data.code==1){
+              this.$router.push("/");
+            }
+          })
+        }
+      })
     }
   },
   components:{

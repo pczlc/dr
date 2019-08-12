@@ -4,6 +4,7 @@ import Index from './views/Index.vue'
 import Products from './views/Products.vue'
 import Details from './views/Details.vue'
 import Login from './views/Login.vue'
+import Cart from './views/Cart.vue'
 import NotFound from './views/NotFound.vue'
 Vue.use(Router)
 
@@ -13,6 +14,7 @@ export default new Router({
     {path:'/Products',component:Products},
     {path:'/Details',component:Details},
     {path:'/Login',component:Login},
+    {path:'/Cart',component:Cart},
     {path:'*',component:NotFound},
   ]
 })

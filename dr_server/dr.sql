@@ -6,7 +6,6 @@ USE dr;
 /*用户信息表*/
 CREATE TABLE dr_user(
 	uid INT PRIMARY KEY AUTO_INCREMENT,
-	uname VARCHAR(32),
 	upwd VARCHAR(32),
 	email VARCHAR(64),
 	phone VARCHAR(16),
@@ -340,5 +339,5 @@ INSERT INTO dr_index_banner VALUES
 (null,"img/index/15597244445cf7819ca6104.jpg",null);
 
 /*插入用户数据*/
-INSERT INTO dr_user(uname,upwd,email,user_name) VALUES
-("zzz","123456","abc@123.com","lalala");
+INSERT INTO dr_user(phone,email,user_name,upwd) VALUES
+("18912345678","abc@123.com","lalala","123456");

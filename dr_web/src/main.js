@@ -11,6 +11,10 @@ axios.defaults.withCredentials=true
 //将axios 注册到vue实例中
   //由于axios不支持use，所以将实例添加到原型上
 Vue.prototype.axios=axios
+//引入qs模块
+import qs from 'qs'
+//将qs添加到vue的原型中
+Vue.prototype.qs=qs
 
 Vue.config.productionTip = false
 
