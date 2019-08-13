@@ -3,9 +3,9 @@
     <header-vue></header-vue>
     <div class="bg_white">
       <ul class="dr_bread">
-        <li><a href="javascript:;">DR</a></li>
-        <li><a href="javascript:;">求婚钻戒</a></li>
-        <li><a href="javascript:;">MY HEART系列</a></li>
+        <li><router-link to="/">DR</router-link></li>
+        <li><router-link to="/Products">求婚钻戒</router-link></li>
+        <li><router-link to="/Products">MY HEART系列</router-link></li>
       </ul>
       <div class="w-1000">
         <div class="ringbuy_cort clear_after">

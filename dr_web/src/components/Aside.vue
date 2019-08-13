@@ -162,7 +162,6 @@ export default {
     opacity:1 !important;
     transition:all .3s linear;
   }
-  /* .dr_aside>div:not(:first-child):hover{background:#fff} */
   .dr_svc7 img{
     position:absolute;
     top:-60px;right:0px;
@@ -177,5 +176,6 @@ export default {
     position:absolute;
     left:0;top:0;
     z-index:2;
+    cursor:pointer;
   }
 </style>

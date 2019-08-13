@@ -10,9 +10,9 @@
       </div>
       <div class="dr_bread clear_after">
         <ul class="clear_after">
-          <li><a href="">DR</a></li>
-          <li><a href="">求婚钻戒</a></li>
-          <li><a href="">所有商品</a></li>
+          <li><router-link to="/">DR</router-link></li>
+          <li><router-link to="/Products">求婚钻戒</router-link></li>
+          <li><router-link to="/Products">所有商品</router-link></li>
         </ul>
         <div class="search">
           <div>
