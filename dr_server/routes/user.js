@@ -26,7 +26,10 @@ router.get('/getSession',(req,res)=>{
     pool.query(sql,(err,result)=>{
       if(err) throw err;
       var user_name=result[0].user_name;
-      res.send({code:1,msg:"已登录",user_name:user_name});
+      res.send({code:1,msg:"已登录",data:{
+        uid:uid,
+        user_name:user_name
+      }});
     })
   }
 });

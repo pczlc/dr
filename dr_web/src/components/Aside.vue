@@ -15,7 +15,7 @@
     <div class="dr_svc3">
       <a href="javascript:;"></a>
       <p>购物车</p>
-      <div class="show"></div>
+      <div class="show" @click="toCart"></div>
       <div>购物车</div>
     </div>
     <div class="dr_svc4">
@@ -62,6 +62,9 @@ export default {
       if(e.target.className=="show"){
         e.target.parentNode.style.background="transparent";
       }
+    },
+    toCart(){
+      this.$router.push("/Cart");
     },
     toTop(){
       window.scrollTo(0,0);

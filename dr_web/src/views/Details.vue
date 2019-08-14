@@ -81,10 +81,10 @@
               </div>
             </div>
             <div class="ringbuy_btn">
-              <a href="" class="addCart">
+              <a href="javascript:;" class="addCart" @click="addCart">
                 <span>加入购物车</span>
               </a>
-              <a href="" class="buyNow">立即购买</a>
+              <a href="javascript:;" class="buyNow">立即购买</a>
             </div>
             <p class="ringbuy_Delivery">
               配送说明：<strong> 预计20个工作日送达（限大陆地区）,如需加急或者其他地区请咨询客服。</strong>
@@ -153,6 +153,17 @@
     </div>
     <footer-vue></footer-vue>
     <aside-vue></aside-vue>
+    <!-- 购物车弹窗 -->
+    <div class="add_success" v-show="addSuccess">
+      <div>
+        <div class="black_border">
+          <a href="javascript:;" class="close" @click="closeScs"></a>
+          <img class="logo" src="../../public/details/dr_logo.png">
+          <span class="success_font">商品已成功加入购物车</span>
+          <router-link to="/Cart" class="toCart">去购物车结算</router-link>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -163,16 +174,18 @@ import MagnifierVue from '../components/Magnifier.vue'
 export default {
   data(){
     return {
+      rid:"",
       title:"",
       price:"",
       imgs:[],
-      status:[]
+      status:[],
+      addSuccess:false
     }
   },
   methods:{
     loadImg(){
-      var rid=this.$route.query.rid;
-      this.axios.get(`product/details?rid=${rid}`).then(res=>{
+      this.rid=this.$route.query.rid;
+      this.axios.get(`product/details?rid=${this.rid}`).then(res=>{
         this.title=res.data.msg.title;
         this.price=res.data.msg.price;
         //保存图片数据，并创建一个数组保存图片active属性
@@ -203,6 +216,32 @@ export default {
         }
         a.classList.add("active");
       }
+    },
+    addCart(){
+      // 判断是否登录
+      this.axios.get("user/getSession").then(res=>{
+        // 未登录跳转至登录页
+        if(res.data.code==-1){
+          this.$router.push("/Login");
+        }else{
+          // 已登录则加入购物车列表
+          var ringObj=this.qs.stringify({
+            user_id:res.data.data.uid,
+            ring_id:this.rid,
+            ring_title:this.title,
+            ring_img:this.imgs[0],
+            ring_price:this.price,
+          });
+          this.axios.post("cart/addItem",ringObj).then(res=>{
+            if(res.data.code==1){
+              this.addSuccess=true;
+            }
+          })
+        }
+      })      
+    },
+    closeScs(){
+      this.addSuccess=false;
     }
   },
   created(){
@@ -448,4 +487,55 @@ export default {
   .ringbuy_details>ul:nth-child(2)>li>span{color:#999;}
   .ringbuy_img>a{display:block;}
   .ringbuy_img>a>img{width:100%;}
+  .add_success{
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(0,0,0,.5);
+    z-index:5;
+  }
+  .add_success>div{
+    width:490px;
+    position:absolute;
+    top:20%;left:50%;
+    background:#fff;
+    margin-left:-245px;
+    padding:15px;
+  }
+  .black_border{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
+    border:2px solid #5e5d62;
+    padding:60px 0 100px;
+  }
+  .black_border .close{
+    position:absolute;
+    top:16px;right:16px;
+    width:14px;height:14px;
+    background:url(../../public/details/close1.png) no-repeat center;
+    padding:10px;
+  }
+  .success_font{
+    height:34px;
+    line-height:34px;
+    font-family:SimSun;
+    font-size:24px;
+    font-weight:700;
+    color:#8b766c;
+    padding-left:44px;
+    background:url(../../public/details/dagou.png) no-repeat left center;
+    margin:40px 0 10px;
+  }
+  .toCart{
+    width:138px;height:28px;
+    line-height:28px;
+    border:1px solid #8b766c;
+    font-size:14px;
+    color:#8b766c;
+    text-align:center;
+    margin-top:50px;
+  }
+  .toCart:hover{background:#8b766c;color:#fff;}
 </style>

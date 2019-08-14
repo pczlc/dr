@@ -1,7 +1,7 @@
 <template>
   <div class="ring_imgs float_l">
     <div>
-      <div class="md_img">
+      <div class="md_img" @mouseover="showLg" @mouseleave="hideLg">
         <div class="img_item">
           <img
           v-for="(img,i) of imgs" 
@@ -10,11 +10,11 @@
           :class="status[i]">
         </div>
         <!-- 灰色滑块上面覆盖一层透明背景，防止闪烁 -->
-        <div class="tr_bg" @mousemove="showLg" @mouseleave="hideLg"></div>
-        <div class="gray_bg"></div>
+        <div class="tr_bg" @mousemove="moveLg" v-show="canMove"></div>
+        <div class="gray_bg" v-show="divDis"></div>
       </div>
       <!-- 背景图可能为透明图片，需要白色背景 -->
-      <div class="white_bg">
+      <div class="white_bg" v-show="divDis">
         <img class="lg_img" src="" />
       </div>
     </div>
@@ -47,6 +47,8 @@ export default {
   data(){
     return {
       times:0, //记录左移次数
+      divDis:false,
+      canMove:true
     }
   },
   props:{
@@ -55,18 +57,21 @@ export default {
     showMd:{type:Function}
   },
   methods:{
-    showLg(e){
+    showLg(){
+      this.divDis=true;
+    },
+    hideLg(){
+      this.divDis=false;
+    },
+    moveLg(e){
       //获取滑块元素
       var gary_bg=document.getElementsByClassName("gray_bg")[0];
-      //设置为显示
-      gary_bg.style.display="block";
-      //显示大图片，并替换对应的url
-      //防止一进入页面就hover会报错，先判断是否加载完成
       var md=document.querySelector(".img_item>.active");
+      //防止一进入页面就hover会报错，先判断是否加载完成
       if(md==null){return;}
+      //替换大图对应的url
       var src=md.src;
       var lg=document.getElementsByClassName("white_bg")[0];
-      lg.style.display="block";
       lg.firstChild.src=src;
       //获取鼠标位置减去滑块一半的宽度
       var x=e.offsetX-75;
@@ -78,14 +83,8 @@ export default {
       gary_bg.style.left=x+"px";
       gary_bg.style.top=y+"px";
       //大图背景随鼠标位置改变
-      lg.firstChild.style.left=-(920-200)/(460-150)*x+"px";
-      lg.firstChild.style.top=-(920-200)/(460-150)*y+"px";
-    },
-    hideLg(){
-      var lg=document.getElementsByClassName("white_bg")[0];
-      var gary_bg=document.getElementsByClassName("gray_bg")[0];
-      lg.style.display="none";
-      gary_bg.style.display="none";
+      lg.firstChild.style.left=-(920-300)/(460-150)*x+"px";
+      lg.firstChild.style.top=-(920-300)/(460-150)*y+"px";
     },
     changeBtn(i){
       //图片左右移功能
@@ -101,10 +100,13 @@ export default {
     }
   },
   mounted(){
-    var nav=document.getElementsByClassName("dr_nav")[0]
-    nav.addEventListener("mousemove",()=>{
-      this.showLg=function(){}
-    })
+    var nav=document.getElementsByClassName("header_nav")[0];
+    nav.addEventListener("mouseover",function(){
+      this.canMove=false;
+    });
+    nav.addEventListener("mouseleave",function(){
+      this.canMove=true;
+    });
   }
 }
 </script>
@@ -127,7 +129,6 @@ export default {
   }
   .gray_bg{
     position:absolute;
-    display:none;
     top:0;left:0;
     width:150px;height:150px;
     background:rgba(153, 153, 153,.4);
@@ -142,9 +143,8 @@ export default {
   .md_img img.active{display:block;}
   .white_bg{
     position:absolute;
-    display:none;
-    left:500px;top:129px;
-    width:200px;height:200px;
+    left:500px;top:0;
+    width:300px;height:300px;
     background-color:#fff;
     border:1px solid rgb(204,204,204);
     overflow:hidden;

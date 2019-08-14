@@ -102,7 +102,9 @@ CREATE TABLE dr_shopping_cart(
 	oid INT PRIMARY KEY AUTO_INCREMENT,
 	user_id INT,
 	ring_id INT,
-	count INT,
+  ring_title VARCHAR(128),
+	ring_img VARCHAR(1024),
+  ring_price DECIMAL(12,2),
 	FOREIGN KEY(user_id) REFERENCES dr_user(uid),
 	FOREIGN KEY(ring_id) REFERENCES dr_ring(rid)
 );
@@ -340,4 +342,4 @@ INSERT INTO dr_index_banner VALUES
 
 /*插入用户数据*/
 INSERT INTO dr_user(phone,email,user_name,upwd) VALUES
-("18912345678","abc@123.com","lalala","123456");
+("18912345678","abc@123.com","lalala","a123456");

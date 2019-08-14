@@ -44,7 +44,7 @@
       <div class="cart">
         <div class="cart_top">
           <span class="checkAll">
-            <input id="checkAll1" type="checkbox">
+            <input id="checkAll1" type="checkbox" v-model="checkAll">
             <label for="checkAll1">全选</label>
           </span>
           <span>商品</span>
@@ -55,10 +55,10 @@
         <div class="cart_list">
           <div v-for="(item,i) of pros" :key="i" class="cart_item">
             <span class="check_img">
-              <input type="checkbox">
-              <img src="../../public/products/BELIEVE系列 典雅 50分 G色/1.jpg">
+              <input type="checkbox" :checked="checkAll">
+              <img :src="`http://127.0.0.1:5050/${item.ring_img}`">
             </span>
-            <span class="title">FOREVER系列 简奢款 30分 H色</span>
+            <span class="title">{{item.ring_title}}</span>
             <span class="choose">
               <span>是否需要艺术字</span>
               <select>
@@ -72,9 +72,9 @@
                 <a href="javascript:;">确定</a>
               </span>
             </span>
-            <span class="price">￥15368</span>
+            <span class="price">￥{{item.ring_price}}</span>
             <span class="remove">
-              <a href="javascript:;">删除</a>
+              <a href="javascript:;" @click="delItem(i)">删除</a>
             </span>
           </div>
           <div class="shopping_promise">
@@ -85,15 +85,15 @@
         </div>
         <div class="cart_bottom">
           <div class="buy_left">
-            <input id="checkAll2" type="checkbox">
+            <input id="checkAll2" type="checkbox" v-model="checkAll">
             <label for="checkAll2">全选</label>
             <router-link to="/Products">继续购物</router-link>
           </div>
           <div class="buy_right">
-            <span>已选 <span class="f_red">2</span> 件商品</span>
-            <span>总价：<span class="f_red">￥12345</span></span>
+            <span>已选 <span class="f_red">{{pros.length}}</span> 件商品</span>
+            <span>总价：<span class="f_red">￥{{totalPrice}}</span></span>
             <span>免运费</span>
-            <a class="buy_btn" href="javascript;;">验证并购买</a>
+            <a class="buy_btn" href="javascript:;">验证并购买</a>
           </div>
         </div>
       </div>
@@ -109,14 +109,22 @@ export default {
   data(){
     return {
       userName:"",
-      pros:1
+      pros:[],
+      checkAll:false
     }
   },
   methods:{
-    getSeesion(){
+    getCart(){
       this.axios.get("user/getSession").then(res=>{
-        if(res.data.code==1){
-          this.userName=res.data.user_name;
+        var result=res.data;
+        if(result.code==1){
+          this.userName=result.data.user_name;
+          var uid=result.data.uid;
+          this.axios.get("cart/list",{params:{uid}}).then(res=>{
+            if(res.data.code==1){
+              this.pros=res.data.data;
+            }
+          })
         }else{
           this.$router.push("/Login");
         }
@@ -125,10 +133,33 @@ export default {
     exit(){
       this.axios.get("user/exit");
       this.$router.push("/");
+    },
+    delItem(i){
+      if(!confirm("确定删除吗?")){
+        //提示删除，如果取消则不执行
+        return;
+      }
+      var ring_id=this.pros[i].ring_id;
+      var ridObj=this.qs.stringify({ring_id});//简写对象解构
+      this.axios.post("cart/delItem",ridObj).then(res=>{
+        if(res.data.code==1){
+          this.getCart();
+        }
+      })
     }
   },
   created(){
-    this.getSeesion();
+    this.getCart();
+  },
+  computed:{
+    //计算总价
+    totalPrice(){
+      var sum=0;
+      for(var item of this.pros){
+        sum+=item.ring_price;
+      }
+      return sum;
+    }
   },
   components:{
     FooterVue,
@@ -325,7 +356,7 @@ export default {
     margin-left:25px;
     background:url(../../public/cart/ico-service.png) no-repeat;
   }
-  .shopping_promise>span:nth-child(2){background-position:0 -36px;}
+  .shopping_promise>span:nth-child(2){background-position:0 -35px;}
   .shopping_promise>span:nth-child(3){background-position:0 -70px;}
   .cart_bottom{
     display:flex;

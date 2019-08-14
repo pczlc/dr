@@ -222,8 +222,9 @@ export default {
   methods:{
     getSeesion(){
       this.axios.get("user/getSession").then(res=>{
-        if(res.data.code==1){
-          this.userName=res.data.user_name;
+        var result=res.data;
+        if(result.code==1){
+          this.userName=result.data.user_name;
           this.isLogin=true;
         }
       })
@@ -335,7 +336,7 @@ export default {
     position:relative;
     left:0px;
     height:54px;
-    z-index:2;
+    z-index:5;
   }
   .dr_nav>li>a{
     display:inline-block;

@@ -3,6 +3,7 @@ const bodyParser=require('body-parser');
 const userRouter=require('./routes/user.js');
 const productRouter=require('./routes/product.js');
 const indexRouter=require('./routes/index.js');
+const cartRouter=require('./routes/cart.js');
 const cors=require("cors");
 const session=require("express-session");
 
@@ -28,3 +29,4 @@ app.use(bodyParser.urlencoded({
 app.use('/user',userRouter);
 app.use('/product',productRouter);
 app.use('/index',indexRouter);
+app.use('/cart',cartRouter);
