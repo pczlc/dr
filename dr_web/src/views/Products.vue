@@ -31,7 +31,7 @@
             </router-link>
             <p class="price">￥{{elem.price}}</p>
             <p class="title">{{elem.title}}</p>
-            <a class="fav" href="">收藏</a>
+            <a class="fav" href="javascript;;">收藏</a>
             <router-link :to="`/Details?rid=${elem.rid}`" class="buy">立即购买</router-link>
           </li>
         </ul>

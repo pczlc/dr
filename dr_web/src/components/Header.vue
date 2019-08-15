@@ -246,11 +246,32 @@ export default {
       }else{
         this.rightDft=this.hlist.right[i].img;
       }
+    },
+    // 页面滚动超过导航栏时，导航栏固定定位
+    navFixed(){
+      // 先获取导航栏离顶部距离保存至变量中
+      var nav=document.getElementsByClassName("dr_nav")[0];
+      var h=nav.offsetTop;
+      window.onscroll=function(){
+        // 获取页面滚动过的高度，考虑到间兼容性问题
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if(scrollTop>=h){
+          nav.style.position="fixed";
+          nav.style.top=0;
+          nav.style["border-bottom"]="1px solid #666";
+        }else{
+          nav.style.position="relative";
+          nav.style.border=0;
+        }
+      }
     }
   },
   created(){
     this.loadHeader();
     this.getSeesion();
+  },
+  mounted(){
+    this.navFixed();
   }
 }
 </script>
@@ -332,11 +353,12 @@ export default {
     top:3px;right:4px;
     background:url(../../public/index/ico-seach.png) no-repeat center center;
   }
+  .header_nav{height:54px;}
   .dr_nav{
     position:relative;
-    left:0px;
     height:54px;
-    z-index:5;
+    background:#fff;
+    z-index:99;
   }
   .dr_nav>li>a{
     display:inline-block;
@@ -383,7 +405,6 @@ export default {
     padding-right:40px;
   }
   .dr_navsuv_first .navsuv_r p a{color:#5e5e61;}
-  /* .dr_navsuv_first p a:hover{color:#bf967c;} */
   .dr_navsuv_second img{
     width:200px;
     margin-top:20px;
