@@ -75,7 +75,7 @@
                     <input type="text" placeholder="限输入5个汉字或10个字母">
                     <i>♥</i>
                     <i>&</i>
-                    <a href="">预览效果</a>
+                    <a href="javascript:;">预览效果</a>
                   </div>
                 </div>
               </div>
@@ -492,7 +492,7 @@ export default {
     top:0;left:0;
     width:100%;height:100%;
     background:rgba(0,0,0,.5);
-    z-index:5;
+    z-index:999;
   }
   .add_success>div{
     width:490px;

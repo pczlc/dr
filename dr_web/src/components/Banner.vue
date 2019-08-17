@@ -20,24 +20,13 @@
 export default {
   data(){
     return {
-      imgList:[],
       interval:null
     }
   },
+  props:{
+    imgList:{type:Array}
+  },
   methods:{
-    load(){
-      this.axios.get("index/getBanner").then(res=>{
-          var list=res.data;
-          for(var elem of list){
-            elem.status="";
-          }
-          //第一项初始化为active
-          list[0].status="active";
-          this.imgList=list;
-          //初始时启动计时器
-          this.interval=setInterval(this.changeImg,4000);
-      });
-    },
     changeImg(i){
       //将重复使用的变量取个别名
       var imgs=this.imgList;
@@ -91,8 +80,9 @@ export default {
       this.interval=setInterval(this.changeImg,4000);
     }
   },
-  created(){
-    this.load();
+  mounted(){
+    // 初始化计时器
+    this.interval=setInterval(this.changeImg,4000);
   }
 }
 </script>

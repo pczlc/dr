@@ -83,7 +83,7 @@ export default {
     background:#f4f2f3;
     font-size:12px;
     color:#8b766c;
-    z-index:6;
+    z-index:999;
   }
   .dr_aside>div{position:relative;text-align:center;}
   /* 选择器，第2个到第7个 */

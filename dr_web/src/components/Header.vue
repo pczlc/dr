@@ -378,7 +378,7 @@ export default {
     min-height:230px;
     background:#fff;
     padding:0 180px 30px;
-    z-index:9999;
+    z-index:7;
   }
   .dr_nav>li>a:hover+div{display:block;}
   .dr_navsuv:hover{display:block;}

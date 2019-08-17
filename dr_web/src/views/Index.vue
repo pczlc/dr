@@ -2,7 +2,7 @@
   <div class="dr_bg">
     <div class="w-1360">
       <header-vue></header-vue>
-      <banner-vue></banner-vue>
+      <banner-vue :imgList="imgList"></banner-vue>
       <div class="dr_love_search clear_after">
         <!-- 小视频 -->
         <div class="f1" @click="showVideo">
@@ -106,10 +106,22 @@ import AsideVue from '../components/Aside.vue'
 export default {
   data(){
     return {
+      imgList:[],
       videoDis:"none"
     }
   },
   methods:{
+    getBannerImg(){
+      this.axios.get("index/getBanner").then(res=>{
+          var list=res.data.data;
+          for(var elem of list){
+            elem.status="";
+          }
+          //第一项初始化为active
+          list[0].status="active";
+          this.imgList=list;
+      })
+    },
     showVideo(){
       this.videoDis="block";
       var v=document.querySelector(".paris_video video");
@@ -120,6 +132,9 @@ export default {
       var v=document.querySelector(".paris_video video");
       v.pause();
     }
+  },
+  created(){
+    this.getBannerImg();
   },
   components:{
     HeaderVue,
