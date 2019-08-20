@@ -72,6 +72,7 @@ export default {
       var pageSize=this.$route.query.pageSize;
       var reg=/^[1-9]\d*$/;
       if(!reg.test(page)){page=1};
+      this.page=parseInt(page);
       if(!reg.test(pageSize)){pageSize=9};
       this.axios.get("product/list",{
         params:{page,pageSize}
@@ -84,13 +85,17 @@ export default {
     next(){
       if(this.page<this.pcount){
         this.page++;
-        this.$router.push(`/Products?page=${this.page}`);
+        this.$router.push(
+          {path:"/Products",query:{page:this.page}}
+        );
       }
     },
     prev(){
       if(this.page>1){
         this.page--;
-        this.$router.push(`/Products?page=${this.page}`);
+        this.$router.push(
+          {path:"/Products",query:{page:this.page}}
+        );
       }
     }
   },
