@@ -20,7 +20,8 @@
 export default {
   data(){
     return {
-      interval:null
+      interval:null,
+      canClick:true
     }
   },
   props:{
@@ -64,9 +65,16 @@ export default {
       }
     },
     changeBtn(i){
-      clearInterval(this.interval);
-      this.changeImg(i);
-      this.interval=setInterval(this.changeImg,4000);
+      if(this.canClick){
+        this.canClick=false;
+        clearInterval(this.interval);
+        this.changeImg(i);
+        this.interval=setInterval(this.changeImg,4000);
+         //设置延时，动画转换为1s,相应设置定时器1s,1s后才能点击切换图片
+        setTimeout(()=>{
+          this.canClick=true;
+        },1000)
+      }
     },
     moveTo(i){
       clearInterval(this.interval);
