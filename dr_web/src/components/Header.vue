@@ -48,7 +48,7 @@
     </div>
     <!-- 导航栏 -->
     <div class="header_nav">
-      <ul class="d_flex dr_nav">
+      <ul :class="`d_flex dr_nav ${navPosition}`">
         <li>
           <a href="javascript:;">DR</a>
           <!-- 隐藏下拉 -->
@@ -216,7 +216,8 @@ export default {
       isLogin:false,
       hlist:{},
       leftDft:"",
-      rightDft:""
+      rightDft:"",
+      navPosition:[""]
     }
   },
   methods:{
@@ -252,16 +253,14 @@ export default {
       // 先获取导航栏离顶部距离保存至变量中
       var nav=document.getElementsByClassName("dr_nav")[0];
       var h=nav.offsetTop;
-      window.onscroll=function(){
-        // 获取页面滚动过的高度，考虑到间兼容性问题
+      window.onscroll=()=>{
+        // 获取页面滚动过的高度，考虑到兼容性问题
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         if(scrollTop>=h){
-          nav.style.position="fixed";
-          nav.style.top=0;
-          nav.style["border-bottom"]="1px solid #666";
+          this.navPosition = "fixed";
+          console.log(nav.classList)
         }else{
-          nav.style.position="relative";
-          nav.style.border=0;
+          this.navPosition = "";
         }
       }
     }
@@ -359,6 +358,11 @@ export default {
     height:54px;
     background:#fff;
     z-index:99;
+  }
+  .dr_nav.fixed{
+    position:fixed;
+    top:0;
+    border-bottom:1px solid #666;
   }
   .dr_nav>li>a{
     display:inline-block;
