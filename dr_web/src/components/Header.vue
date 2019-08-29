@@ -3,7 +3,7 @@
     <!-- header上部分 -->
     <div class="header_top">
       <div>
-        <img class="gps_icon" src="../../public/index/ico-gps.png" alt="">
+        <img class="gps_icon" src="../../public/img/index/ico-gps.png" alt="">
         <span class="font_small font_main_color">成都</span>
         <a class="total_store font_small" href="javascript:;">全国店铺 ></a>
         <div class="float_r clear_after">
@@ -28,7 +28,7 @@
             </li>
           </ul>
           <div class="d_inline_block b_slash">
-              <img class="phone_icon" src="../../public/index/phone.png">
+              <img class="phone_icon" src="../../public/img/index/phone.png">
               <span class="font_small color_gray">400 01 13520</span>
           </div>
           <div class="d_inline_block b_slash">
@@ -42,7 +42,7 @@
       </div>
       <div class="dr_logo">
         <router-link to="/"  class="a_img">
-          <img  src="../../public/index/logo.png" alt="">
+          <img  src="../../public/img/index/logo.png" alt="">
         </router-link>
       </div>
     </div>
@@ -55,11 +55,11 @@
           <div class="dr_navsuv dr_navsuv_first">
             <div class="clear_after">
               <div class="navsuv_l float_l">
-                <img src="../../public/index/drword.png" alt="">
+                <img src="../../public/img/index/drword.png" alt="">
                 <p><a href="javascript:;">加入dr族</a></p>
               </div>
               <div class="navsuv_r float_l">
-                <img src="../../public/index/adv_gift.jpg" alt="">
+                <img src="../../public/img/index/adv_gift.jpg" alt="">
                 <p><a href="javascript:;">DR福利商城</a></p>
               </div>
             </div>
@@ -118,7 +118,7 @@
             </div>
             <div class="navsuv_r float_l">
               <router-link to="/Products" class="a_img">
-                <img src="../../public/index/cpring.jpg" alt="">
+                <img src="../../public/img/index/cpring.jpg" alt="">
               </router-link>
               <p>
                 <router-link to="/Products">结婚对戒</router-link>
@@ -150,7 +150,7 @@
             </div>
             <div class="navsuv_r float_l">
               <router-link to="/Products" class="a_img">
-                <img src="../../public/index/jnr.jpg" alt="">
+                <img src="../../public/img/index/jnr.jpg" alt="">
               </router-link>
               <p>
                 <router-link to="/Products">真爱礼物</router-link>
@@ -166,7 +166,7 @@
           <div class="dr_navsuv dr_navsuv_seventh clear_after">
               <div class="navsuv_l float_l">
                 <a class="a_img" href="javascript:;">
-                  <img src="../../public/index/15336107475b690afbba109.jpg" alt="">
+                  <img src="../../public/img/index/15336107475b690afbba109.jpg" alt="">
                 </a>
                 <p>
                   <a href="javascript:;">品牌文化</a>
@@ -174,7 +174,7 @@
               </div>
               <div class="navsuv_r float_l">
                 <a class="a_img" href="javascript:;">
-                  <img src="../../public/index/15196164725a9381d8e90f4.jpg" alt="">
+                  <img src="../../public/img/index/15196164725a9381d8e90f4.jpg" alt="">
                 </a>
                 <p>
                   <a href="javascript:;">明星推荐</a>
@@ -188,7 +188,7 @@
           <div class="dr_navsuv dr_navsuv_eighth clear_after">
               <div class="navsuv_l float_l">
                 <a class="a_img" href="javascript:;">
-                  <img src="../../public/index/1488350702.jpg" alt="">
+                  <img src="../../public/img/index/1488350702.jpg" alt="">
                 </a>
                 <p>
                   <a href="javascript:;">品牌文化</a>
@@ -196,7 +196,7 @@
               </div>
               <div class="navsuv_r float_l">
                 <a class="a_img" href="javascript:;">
-                  <img src="../../public/index/1488352096.jpg" alt="">
+                  <img src="../../public/img/index/1488352096.jpg" alt="">
                 </a>
                 <p>
                   <a href="javascript:;">明星推荐</a>
@@ -312,7 +312,7 @@ export default {
     padding:0 10px;
   }
   .lan_chs{
-    background:url(../../public/index/bottom.png) no-repeat right center;
+    background:url(../../public/img/index/bottom.png) no-repeat right center;
   }
   .lan_choose{
     position:absolute;
@@ -356,7 +356,7 @@ export default {
     position:absolute;
     width:22px;height:23px;
     top:3px;right:4px;
-    background:url(../../public/index/ico-seach.png) no-repeat center center;
+    background:url(../../public/img/index/ico-seach.png) no-repeat center center;
   }
   .header_nav{height:54px;}
   .dr_nav{
@@ -394,7 +394,7 @@ export default {
   .dr_navsuv:hover{display:block;}
   .navsuv_l{
     width:497px;min-height:200px;
-    background:url(../../public/index/subNav_line.png) no-repeat right center;
+    background:url(../../public/img/index/subNav_line.png) no-repeat right center;
     background-size:auto 90%;
     padding-top:30px;
     padding-right:5px;
@@ -410,7 +410,7 @@ export default {
   .dr_navsuv_first .navsuv_l p a{
     display:inline-block;
     height:29px;line-height:29px;
-    background:url(../../public/index/black_icon.png) no-repeat right center;
+    background:url(../../public/img/index/black_icon.png) no-repeat right center;
     color:#5e5e61;
     padding-right:40px;
   }
@@ -480,7 +480,7 @@ export default {
   .user a{display:inline-block;font-size:12px;line-height:20px;}
   .user>a{
     padding:0 15px;
-    background:url(../../public/header/bottom.png) no-repeat right center;
+    background:url(../../public/img/header/bottom.png) no-repeat right center;
     color:#9b745c;
   }
   .user_handle{

@@ -160,7 +160,7 @@ export default {
     position:absolute;
     top:50%;margin-top:-9.5px;
     width:10px;height:19px;
-    background:url(../../public/icon/pre_next.png) no-repeat;
+    background:url(../../public/img/icon/pre_next.png) no-repeat;
   }
   .prev_btn{left:15px;background-position:0 0;cursor:pointer;}
   .next_btn{right:15px;background-position:-10px -20px;cursor:pointer;}
@@ -203,7 +203,7 @@ export default {
   .ringbuy_share>a{
     display:inline-block;
     width:26px;height:26px;
-    background:url(../../public/icon/ico-shares.png);
+    background:url(../../public/img/icon/ico-shares.png);
     margin:0 2px;
     vertical-align:middle;
     outline: 0;border:0;font-size:0;

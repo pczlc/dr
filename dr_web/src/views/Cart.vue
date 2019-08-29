@@ -2,7 +2,7 @@
   <div class="w-1360">
     <div class="dr_header">
       <router-link to="/" class="logo">
-        <img src="../../public/index/logo.png">
+        <img src="../../public/img/index/logo.png">
       </router-link>
       <div class="header_r">
         <div class="user">
@@ -188,7 +188,7 @@ export default {
   .user a{display:inline-block;font-size:12px;line-height:20px;}
   .user>a{
     padding:0 15px;
-    background:url(../../public/header/bottom.png) no-repeat right center;
+    background:url(../../public/img/header/bottom.png) no-repeat right center;
     color:#9b745c;
   }
   .user_handle{
@@ -212,13 +212,13 @@ export default {
   .phone{
     color:#8d8d8d;
     padding-left:17px;
-    background:url(../../public/index/phone.png) no-repeat left center;
+    background:url(../../public/img/index/phone.png) no-repeat left center;
     margin:0 15px;
   }
   .help{
     color:#8d8d8d;
     padding-right:10px;
-    background:url(../../public/login/bread_right.png) no-repeat right center;
+    background:url(../../public/img/login/bread_right.png) no-repeat right center;
   }
   .help:hover{color:#bf967c;}
   .main{margin-top:40px;}
@@ -246,7 +246,7 @@ export default {
     display:block;
     width:100%;
     line-height:23px;
-    background:#cbcbcb url(../../public/aside/steps_bg.png) no-repeat center;
+    background:#cbcbcb url(../../public/img/aside/steps_bg.png) no-repeat center;
     color:#fff;
     margin-bottom:10px;
   }
@@ -354,7 +354,7 @@ export default {
     line-height:20px;
     padding-left:20px;
     margin-left:25px;
-    background:url(../../public/cart/ico-service.png) no-repeat;
+    background:url(../../public/img/cart/ico-service.png) no-repeat;
   }
   .shopping_promise>span:nth-child(2){background-position:0 -35px;}
   .shopping_promise>span:nth-child(3){background-position:0 -70px;}

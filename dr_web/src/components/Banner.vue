@@ -114,7 +114,7 @@ export default {
   .prev_button,.next_button{
     position:absolute;
     width:24px;height:45px;
-    background:url(../../public/index/ico-bannerBtn.png);
+    background:url(../../public/img/index/ico-bannerBtn.png);
     top:50%;
     margin-top:-22.5px;
     z-index:3;

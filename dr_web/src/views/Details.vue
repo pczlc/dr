@@ -124,28 +124,28 @@
           </ul>
           <div class="ringbuy_img">
             <a href="javascript:;">
-              <img src="../../public/details/1501499527.jpg" alt="">
+              <img src="../../public/img/details/1501499527.jpg" alt="">
             </a>
             <a href="javascript:;">
-              <img src="../../public/details/1501499535.jpg" alt="">
+              <img src="../../public/img/details/1501499535.jpg" alt="">
             </a>
             <a href="javascript:;">
-              <img src="../../public/details/1501499543.jpg" alt="">
+              <img src="../../public/img/details/1501499543.jpg" alt="">
             </a>
             <a href="javascript:;">
-              <img src="../../public/details/1501499548.jpg" alt="">
+              <img src="../../public/img/details/1501499548.jpg" alt="">
             </a>
             <a href="javascript:;">
-              <img src="../../public/details/1501499552.jpg" alt="">
+              <img src="../../public/img/details/1501499552.jpg" alt="">
             </a>
             <a href="javascript:;">
-              <img src="../../public/details/1501499557.jpg" alt="">
+              <img src="../../public/img/details/1501499557.jpg" alt="">
             </a>
             <a href="javascript:;">
-              <img src="../../public/details/1501499562.jpg" alt="">
+              <img src="../../public/img/details/1501499562.jpg" alt="">
             </a>
             <a href="javascript:;">
-              <img src="../../public/details/1543992030.jpg" alt="">
+              <img src="../../public/img/details/1543992030.jpg" alt="">
             </a>
           </div>
         </div>
@@ -158,7 +158,7 @@
       <div>
         <div class="black_border">
           <a href="javascript:;" class="close" @click="closeScs"></a>
-          <img class="logo" src="../../public/details/dr_logo.png">
+          <img class="logo" src="../../public/img/details/dr_logo.png">
           <span class="success_font">商品已成功加入购物车</span>
           <router-link to="/Cart" class="toCart">去购物车结算</router-link>
         </div>
@@ -340,7 +340,7 @@ export default {
   }
   .choose_btn.active{
     border:2px solid #907c73;
-    background:url(../../public/details//right.png) no-repeat bottom right;
+    background:url(../../public/img/details/right.png) no-repeat bottom right;
     line-height:26px;
   }
   .ringbuy_msg{
@@ -393,7 +393,7 @@ export default {
   }
   .addCart>span{
     padding-left:26px;
-    background:url(../../public/details/shopcart.png) no-repeat left center;
+    background:url(../../public/img/details/shopcart.png) no-repeat left center;
   }
   .addCart:hover,.buyNow:hover{
     color:#fff;
@@ -422,13 +422,13 @@ export default {
     margin-right:14px;
   }
   .ringbuy_Promise>span:nth-child(2){
-    background:url(../../public/details/sev_first.png) no-repeat left center;
+    background:url(../../public/img/details/sev_first.png) no-repeat left center;
   }
   .ringbuy_Promise>span:nth-child(3){
-    background:url(../../public/details/sev_sec.png) no-repeat left center;
+    background:url(../../public/img/details/sev_sec.png) no-repeat left center;
   }
   .ringbuy_Promise>span:nth-child(4){
-    background:url(../../public/details/sev_third.png) no-repeat left center;
+    background:url(../../public/img/details/sev_third.png) no-repeat left center;
   }
   .ringbuy_Promise>a{
     display: inline-block;
@@ -440,7 +440,7 @@ export default {
   }
   .ringbuy_Promise>a>i{
     line-height:16px;
-    background:url(../../public/details/thekf.gif) no-repeat left center;
+    background:url(../../public/img/details/thekf.gif) no-repeat left center;
     padding-left:24px;
   }
   .ringbuy_Promise>a:hover{background:#8b766c;}
@@ -514,7 +514,7 @@ export default {
     position:absolute;
     top:16px;right:16px;
     width:14px;height:14px;
-    background:url(../../public/details/close1.png) no-repeat center;
+    background:url(../../public/img/details/close1.png) no-repeat center;
     padding:10px;
   }
   .success_font{
@@ -525,7 +525,7 @@ export default {
     font-weight:700;
     color:#8b766c;
     padding-left:44px;
-    background:url(../../public/details/dagou.png) no-repeat left center;
+    background:url(../../public/img/details/dagou.png) no-repeat left center;
     margin:40px 0 10px;
   }
   .toCart{

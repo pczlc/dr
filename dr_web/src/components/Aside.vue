@@ -40,7 +40,7 @@
       <a href="javascript:;"></a>
       <p>手机端</p>
       <div class="show"></div>
-      <img src="../../public/aside/ewm.jpg" alt="">
+      <img src="../../public/img/aside/ewm.jpg" alt="">
     </div>
     <div class="dr_svc8">
       <a href="javascript:;"></a>
@@ -95,7 +95,7 @@ export default {
   .dr_aside>div:nth-child(2){margin-top:15px !important;}
   .dr_aside>div>a{
     display:block;
-    background-image:url(../../public/aside/icon_servie.png);
+    background-image:url(../../public/img/aside/icon_servie.png);
     margin:0 auto;
   }
   .dr_svc1{
@@ -106,7 +106,7 @@ export default {
   }
   .dr_svc1>a{
     width:50px;height:50px;
-    background:url(../../public/aside/zxkf.gif) no-repeat !important;
+    background:url(../../public/img/aside/zxkf.gif) no-repeat !important;
   }
   .dr_aside p:nth-child(2){line-height:28px;}
   .dr_aside .dr_svc1>p{color:#fff;line-height:16px;}
@@ -114,13 +114,13 @@ export default {
     width:4px;height:4px;
     position:absolute;
     bottom:-4px;left:0;
-    background:url(../../public/aside/icon_yleft.png);
+    background:url(../../public/img/aside/icon_yleft.png);
   }
   .abs_r{
     width:4px;height:4px;
     position:absolute;
     bottom:-4px;right:0;
-    background:url(../../public/aside/icon_yright.png);
+    background:url(../../public/img/aside/icon_yright.png);
   }
   .dr_svc2 a{
     width:30px;height:26px;
@@ -148,7 +148,7 @@ export default {
   }
   .dr_svc8 a{
     width:48px;height:48px;
-    background-image:url(../../public/aside/totop.jpg) !important;
+    background-image:url(../../public/img/aside/totop.jpg) !important;
   }
   .dr_aside>div>div:last-child{
     position:absolute;

@@ -7,11 +7,11 @@
         <!-- 小视频 -->
         <div class="f1" @click="showVideo">
           <div class="play_button"></div>
-          <img src="../../public/index/15504818355c6a79abcae4d.jpg" alt="">
+          <img src="../../public/img/index/15504818355c6a79abcae4d.jpg" alt="">
         </div>
         <!-- 身份证查询 -->
         <div class="f2">   
-          <img src="../../public/index/logo_noword.png" alt="">
+          <img src="../../public/img/index/logo_noword.png" alt="">
           <p>男士凭身份证一生仅能定制一枚DR求婚钻戒</p>
           <p>购买时 签署一生唯一真爱协议</p>
           <p>终生不可更改</p>
@@ -27,13 +27,13 @@
         <div class="family_left">
           <div class="family_item">
             <router-link class="a_img" to="Products">
-              <img src="../../public/index/15597245855cf78229c541d.jpg" alt="">
+              <img src="../../public/img/index/15597245855cf78229c541d.jpg" alt="">
             </router-link>
             <p>求婚钻戒</p>
           </div>
           <div class="family_item">
             <router-link class="a_img" to="Products">
-              <img src="../../public/index/15597248705cf78346f2c6a.jpg" alt="">
+              <img src="../../public/img/index/15597248705cf78346f2c6a.jpg" alt="">
             </router-link>
             <p>真爱礼物</p>
           </div>
@@ -41,13 +41,13 @@
         <div class="family_right">
           <div class="family_item">
             <router-link class="a_img" to="Products">
-              <img src="../../public/index/15597246205cf7824cbdddb.jpg" alt="">
+              <img src="../../public/img/index/15597246205cf7824cbdddb.jpg" alt="">
             </router-link>
             <p>男戒</p>
           </div>
           <div class="family_item">
             <router-link class="a_img" to="Products">
-              <img src="../../public/index/15597249315cf78383a5133.jpg" alt="">
+              <img src="../../public/img/index/15597249315cf78383a5133.jpg" alt="">
             </router-link>
             <p>结婚对戒</p>
           </div>
@@ -57,16 +57,16 @@
       <div class="dr_shop clear_after">
         <div class="float_l">
           <a class="a_img" href="javascript:;">
-            <img src="../../public/index/15597254485cf7858849818.jpg" alt="">
+            <img src="../../public/img/index/15597254485cf7858849818.jpg" alt="">
           </a>
         </div>
         <div class="float_r city_shop">
-          <img src="../../public/index/logo_noword.png" alt="">
+          <img src="../../public/img/index/logo_noword.png" alt="">
           <div class="input_city">
             <span>成都</span>
             <input type="text" placeholder="请输入城市名称如：成都">
             <router-link class="a_img" to="Products">
-              <img src="../../public/index/ico-wseach.png" alt="">
+              <img src="../../public/img/index/ico-wseach.png" alt="">
             </router-link>
           </div>
           <a class="order_btn" href="javascript:;">预约有礼（首次预约可领取精美礼品）</a>
@@ -75,15 +75,15 @@
       <!-- 其他页面 -->
       <div class="dr_other">
         <a class="a_img" href="javascript:;">
-          <img src="../../public/index/15483197085c497bdc7f34e.jpg" alt="">
+          <img src="../../public/img/index/15483197085c497bdc7f34e.jpg" alt="">
           <p>DR粉丝故事</p>
         </a>
         <a class="a_img" href="javascript:;">
-          <img src="../../public/index/15610866665d0c4aca3d873.jpg" alt="">
+          <img src="../../public/img/index/15610866665d0c4aca3d873.jpg" alt="">
           <p>真爱明星</p>
         </a>
         <a class="a_img" href="javascript:;">
-          <img src="../../public/index/15625739465d22fc7abc1a5.jpg" alt="">
+          <img src="../../public/img/index/15625739465d22fc7abc1a5.jpg" alt="">
           <p>DR活动专题</p>
         </a>
       </div>
@@ -92,7 +92,7 @@
     </div>
     <div class="paris_video" :style="`display:${videoDis}`">
       <div>
-        <video src="../../public/index/paris.mp4" controls></video>
+        <video src="../../public/img/index/paris.mp4" controls></video>
         <div class="close" @click="closeVideo"></div>
       </div>
     </div>
@@ -161,7 +161,7 @@ export default {
   .dr_love_search .play_button{
     position:absolute;
     width:100%;height:100%;
-    background:url(../../public/index/ico-play.png) no-repeat center center;
+    background:url(../../public/img/index/ico-play.png) no-repeat center center;
   }
   .play_button:hover{cursor:pointer;}
   .dr_love_search .f2 img{margin-top:54px;margin-bottom:20px;}
@@ -204,7 +204,7 @@ export default {
     position:absolute;
     width:22px;height:22px;
     top:11.5px;right:16px;
-    background:url(../../public//index/ico-wseach.png) no-repeat;
+    background:url(../../public/img/index/ico-wseach.png) no-repeat;
   }
   .dr_family{margin-top:16px;}
   .family_left{float:left;width:694px;}
@@ -239,7 +239,7 @@ export default {
   }
   .input_city input{
     width:160px;height:30px;
-    background:url(../../public/index/ico-gps1.png) no-repeat left center;
+    background:url(../../public/img/index/ico-gps1.png) no-repeat left center;
     border:0;
     color:#ded8d2;
     padding-left:20px;
@@ -294,6 +294,6 @@ export default {
     position:absolute;
     width:40px;height:40px;
     right:0;top:-40px;
-    background:url(../../public/index/sp_close.jpg) no-repeat;
+    background:url(../../public/img/index/sp_close.jpg) no-repeat;
   }
 </style>

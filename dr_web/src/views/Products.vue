@@ -5,7 +5,7 @@
       <!-- 顶部推荐图 -->
       <div>
         <a class="a_img" href="">
-          <img src="../../public/range/15597275165cf78d9c51a1a.jpg" alt="">
+          <img src="../../public/img/range/15597275165cf78d9c51a1a.jpg" alt="">
         </a>
       </div>
       <div class="dr_bread clear_after">
@@ -142,7 +142,7 @@ export default {
   .dr_bread>.search i{
     display:inline-block;
     width:30px;height:30px;
-    background:url(../../public/icon/search.png) no-repeat center;
+    background:url(../../public/img/icon/search.png) no-repeat center;
     vertical-align:middle;
     margin-right:5px;
     cursor:pointer;

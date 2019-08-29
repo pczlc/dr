@@ -2,7 +2,7 @@
   <div class="w-1360">
     <div class="dr_header">
       <router-link to="/" class="logo">
-        <img src="../../public/index/logo.png">
+        <img src="../../public/img/index/logo.png">
       </router-link>
       <div class="header_r">
         <router-link to="/" class="log_reg_btn">注册/登录</router-link>
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="main">
-      <img class="login_bg" src="../../public/login/login_bg.jpg">
+      <img class="login_bg" src="../../public/img/login/login_bg.jpg">
       <div class="log_reg_fun">
         <div>
           <div class="login_div" v-show="show">
@@ -178,13 +178,13 @@ export default {
   .phone{
     color:#8d8d8d;
     padding-left:17px;
-    background:url(../../public/index/phone.png) no-repeat left center;
+    background:url(../../public/img/index/phone.png) no-repeat left center;
     margin:0 15px;
   }
   .help{
     color:#8d8d8d;
     padding-right:10px;
-    background:url(../../public/login/bread_right.png) no-repeat right center;
+    background:url(../../public/img/login/bread_right.png) no-repeat right center;
   }
   .help:hover{color:#bf967c;}
   .main{position:relative;}
@@ -221,7 +221,7 @@ export default {
     width:100%;height:38px;
     border:1px solid #e6e6e6;
     border-radius:4px;
-    background:url(../../public/login/ico-uinput.png) no-repeat;
+    background:url(../../public/img/login/ico-uinput.png) no-repeat;
     padding-left:38px;
     box-sizing:border-box;
     margin-top:12px;
@@ -255,14 +255,14 @@ export default {
   }
   .login_bottom{margin-top:50px;text-align:center;}
   .login_bottom>p{
-    background:url(../../public/login/otherLoginHr.png) no-repeat center center;
+    background:url(../../public/img/login/otherLoginHr.png) no-repeat center center;
     font-size:12px;
     color:#8b766c;
   }
   .login_bottom>a{
     display:inline-block;
     width:21px;height:16px;
-    background:url(../../public/login/ico-otherLogin.png) no-repeat;
+    background:url(../../public/img/login/ico-otherLogin.png) no-repeat;
     margin:14px 8px 10px;
   }
   .login_bottom>a:nth-child(3){
@@ -286,7 +286,7 @@ export default {
     box-sizing:border-box;
     width:100%;
     padding:4px 0 4px 25px;
-    background:#fff2f2 url(../../public/login/ico-error.png) no-repeat 4px center;
+    background:#fff2f2 url(../../public/img/login/ico-error.png) no-repeat 4px center;
     border:1px solid #ff7373;
     font-size:12px;
     color:#666;

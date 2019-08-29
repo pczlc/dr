@@ -119,13 +119,13 @@
           </div>
           <div class="float_r">
             <a href="javascript:;">
-              <img class="gov_icon" src="../../public/index/govIcon.gif" alt="">
+              <img class="gov_icon" src="../../public/img/index/govIcon.gif" alt="">
             </a>
             <a href="javascript:;">
-              <img src="../../public/index/icon_police.png" alt="">
+              <img src="../../public/img/index/icon_police.png" alt="">
             </a>
             <span>粤公网安备 44030302000934号/ 粤ICP备11012085号-2/Copyright©2006-2018 www.darryring.com 戴瑞珠宝 All Rights Reserved.</span>
-            <img class="kx_icon" src="../../public/index/kxzd.png" alt="">
+            <img class="kx_icon" src="../../public/img/index/kxzd.png" alt="">
           </div>
         </div>
       </div>
@@ -143,7 +143,7 @@ export default {
   .dr_footer{padding-top:50px;background:#fff;}
   .dr_footer_top{
     height:16px;
-    background:url(../../public/index/footer_rp.png) repeat-x;
+    background:url(../../public/img/index/footer_rp.png) repeat-x;
   }
   .dr_footer_icon{
     width:1200px;
@@ -158,7 +158,7 @@ export default {
   .dr_footer_icon li a i{
     display:inline-block;
     width:60px;height:60px;
-    background:url(../../public/index/icon_footer.png) no-repeat;
+    background:url(../../public/img/index/icon_footer.png) no-repeat;
   }
   .dr_footer_icon li:nth-child(2) a i{
     background-position:-60px 0;
@@ -222,7 +222,7 @@ export default {
   .dr_focus a{
     display:inline-block;
     width:44px;height:44px;
-    background:url(../../public/index/share_focus.png);
+    background:url(../../public/img/index/share_focus.png);
     margin:0 15px;
     vertical-align:middle;
   }
