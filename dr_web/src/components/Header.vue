@@ -250,18 +250,24 @@ export default {
     },
     // 页面滚动超过导航栏时，导航栏固定定位
     navFixed(){
+      //定义一个变量用于保存定时器
+      var timer;
       // 先获取导航栏离顶部距离保存至变量中
       var nav=document.getElementsByClassName("dr_nav")[0];
       var h=nav.offsetTop;
       window.onscroll=()=>{
-        // 获取页面滚动过的高度，考虑到兼容性问题
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        if(scrollTop>=h){
-          this.navPosition = "fixed";
-          console.log(nav.classList)
-        }else{
-          this.navPosition = "";
+        if(timer!=="undefined"){
+          clearTimeout(timer)
         }
+        setTimeout(()=>{
+          // 获取页面滚动过的高度，考虑到兼容性问题
+          var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+          if(scrollTop>=h){
+            this.navPosition = "fixed";
+          }else{
+            this.navPosition = "";
+          }
+        },1000/60)
       }
     }
   },
