@@ -190,7 +190,7 @@ export default {
         this.price=res.data.msg.price;
         //保存图片数据，并创建一个数组保存图片active属性
         for(var img of res.data.imgs){
-          this.imgs.push(img);
+          this.imgs.push(this.axios.defaults.baseURL+img);
           this.status.push("");
         };
         //初始化第一张图为active
@@ -229,12 +229,14 @@ export default {
             user_id:res.data.data.uid,
             ring_id:this.rid,
             ring_title:this.title,
-            ring_img:this.imgs[0],
+            ring_img:this.imgs[0].split(this.axios.defaults.baseURL)[1],
             ring_price:this.price,
           });
           this.axios.post("cart/addItem",ringObj).then(res=>{
             if(res.data.code==1){
               this.addSuccess=true;
+            }else{
+              alert("购物车已有该商品!")
             }
           })
         }
@@ -246,6 +248,10 @@ export default {
   },
   created(){
     this.loadImg();
+    this.$store.commit("changeBg","#fff");
+  },
+  beforeDestroy(){
+    this.$store.commit("changeBg","url(img/index/back_r_o.jpg)");
   },
   components:{
     HeaderVue,

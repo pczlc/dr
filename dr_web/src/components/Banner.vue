@@ -3,7 +3,7 @@
   <div class="dr_banner">
     <div id="img_change">
       <router-link to="Products" v-for="(elem,i) of imgList" :key="i" :class="elem.status">
-        <img :src="`http://127.0.0.1:5050/${elem.img}`">
+        <img :src="elem.img">
       </router-link>
     </div>
     <!-- 轮播图翻页 -->

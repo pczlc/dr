@@ -56,7 +56,7 @@
           <div v-for="(item,i) of pros" :key="i" class="cart_item">
             <span class="check_img">
               <input type="checkbox" :checked="checkAll">
-              <img :src="`http://127.0.0.1:5050/${item.ring_img}`">
+              <img :src="item.ring_img">
             </span>
             <span class="title">{{item.ring_title}}</span>
             <span class="choose">
@@ -122,6 +122,9 @@ export default {
           var uid=result.data.uid;
           this.axios.get("cart/list",{params:{uid}}).then(res=>{
             if(res.data.code==1){
+              for(var item of res.data.data){
+                item.ring_img=this.axios.defaults.baseURL+item.ring_img;
+              }
               this.pros=res.data.data;
             }
           })

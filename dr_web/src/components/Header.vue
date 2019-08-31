@@ -72,7 +72,7 @@
             <div class="clear_after d_flex">
               <div>
                 <router-link to="/Products" class="a_img">
-                  <img class="left_img" :src="`http://127.0.0.1:5050/${leftDft}`">
+                  <img class="left_img" :src="leftDft">
                 </router-link>
               </div>
               <div class="dr_set">
@@ -87,7 +87,7 @@
               </div>
               <div>
                 <router-link to="/Products" class="a_img">
-                  <img class="left_img" :src="`http://127.0.0.1:5050/${rightDft}`">
+                  <img class="left_img" :src="rightDft">
                 </router-link>
               </div>
             </div>
@@ -237,15 +237,15 @@ export default {
     loadHeader(){
       this.axios.get("product/headerImg").then(res=>{
         this.hlist=res.data;
-        this.leftDft=res.data.left[0].img;
-        this.rightDft=res.data.right[0].img;
+        this.leftDft=this.axios.defaults.baseURL+res.data.left[0].img;
+        this.rightDft=this.axios.defaults.baseURL+res.data.right[0].img;
       });
     },
     changeImg(location,i){
       if(location=="left"){
-        this.leftDft=this.hlist.left[i].img;
+        this.leftDft=this.axios.defaults.baseURL+this.hlist.left[i].img;
       }else{
-        this.rightDft=this.hlist.right[i].img;
+        this.rightDft=this.axios.defaults.baseURL+this.hlist.right[i].img;
       }
     },
     // 页面滚动超过导航栏时，导航栏固定定位

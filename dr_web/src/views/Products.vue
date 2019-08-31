@@ -27,7 +27,7 @@
         <ul class="clear_after">
           <li class="pro_li" v-for="(elem,i) of pros" :key="i">
             <router-link :to="`/Details?rid=${elem.rid}`" class="a_img">
-              <img :src="`http://127.0.0.1:5050/${elem.img}`" alt="">
+              <img v-lazy="elem.img" alt="">
             </router-link>
             <p class="price">￥{{elem.price}}</p>
             <p class="title">{{elem.title}}</p>
@@ -77,6 +77,9 @@ export default {
       this.axios.get("product/list",{
         params:{page,pageSize}
       }).then(res=>{
+        for(var item of res.data.pros){
+          item.img=this.axios.defaults.baseURL+item.img;
+        }
         this.pros=res.data.pros;
         this.pcount=res.data.count;
         this.len=res.data.len;

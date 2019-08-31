@@ -5,7 +5,7 @@
         <div class="img_item">
           <img
           v-for="(img,i) of imgs" 
-          :src="`http://127.0.0.1:5050/${img}`" 
+          :src="img" 
           :key="i"
           :class="status[i]">
         </div>
@@ -25,7 +25,7 @@
         <!-- 获取图片个数动态赋值宽，通过times赋值margin值 -->
         <ul class="sm_rings" :style="`width:${(imgs.length+2)*80}px;margin-left:-${times*80}px`">
           <li v-for="(img,i) of imgs" :key="i">
-            <img :class="status[i]" :src="`http://127.0.0.1:5050/${img}`" 
+            <img :class="status[i]" :src="img" 
             @mouseover="showMd(i)">
           </li>
         </ul>

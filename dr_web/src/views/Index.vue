@@ -116,6 +116,7 @@ export default {
           var list=res.data.data;
           for(var elem of list){
             elem.status="";
+            elem.img=this.axios.defaults.baseURL+elem.img;
           }
           //第一项初始化为active
           list[0].status="active";
