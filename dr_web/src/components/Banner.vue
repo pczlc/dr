@@ -91,6 +91,10 @@ export default {
   mounted(){
     // 初始化计时器
     this.interval=setInterval(this.changeImg,4000);
+  },
+  beforeDestroy(){
+    clearInterval(this.interval);
+    this.interval=null;
   }
 }
 </script>
